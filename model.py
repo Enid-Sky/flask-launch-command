@@ -28,6 +28,32 @@ class User(db.Model):
         return f"<User info: id = {self.user_id}, name = {self.fname} {self.lname}>"
 
 
+class UpcomingLaunch(db.Model):
+    """Upcoming launch details"""
+
+
+class myLaunch(db.Model):
+    """Launch saved by user"""
+
+
+class TwilioMessage(db.Model):
+    """Launch reminder message"""
+
+
+#####################################################################
+# FEATURE MODELS
+
+class News(db.Model):
+    """Latest spaceflight news"""
+
+
+class MyNews(db.Model):
+    """News article saved by user"""
+
+
+##############################################################################
+# DATABASE FUNCTIONS
+
 def connect_to_db(flask_app, db_uri='postgresql:///launchcommand', echo=True):
     """Connect the database to the Flask app"""
 
