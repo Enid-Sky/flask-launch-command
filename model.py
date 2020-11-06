@@ -23,6 +23,9 @@ class User(db.Model):
     password = db.Column(db.String(50), nullable=False)
     mobile_number = db.Column(db.String(15), nullable=False, unique=True)
 
+    # relationship
+    my_launch = db.relationship('myLaunch')
+
     def __repr__(self):
         """Show infor about user"""
 
@@ -47,10 +50,38 @@ class UpcomingLaunch(db.Model):
     pad_location = db.Column(db.String, nullable=False)
     image = db.Column(db.String(10000), nullable=False)
 
+    # relationship
+    my_launch = db.relationship('myLaunch')
+
     def __repr__(self):
         """Show infor about user"""
 
         return f"<Upcoming launch details: id = {self.upcomingLaunch_id}, name = {self.name}>"
+
+
+class myLaunch(db.Model):
+    """Launch saved by user"""
+
+    __tablename__ = "my_launches"
+
+    my_launch_id = db.Column(db.Integer,
+                             primary_key=True,
+                             unique=True,
+                             autoincrement=True)
+
+    user_id = db.Column(db.Integer, db.ForeignKey(
+        'users.user_id'), nullable=False)
+    launch_id = db.Column(db.Integer, db.ForeignKey(
+        'launches.upcomingLaunch_id'), nullable=False)
+
+    # relationships
+    user = db.relationship('User')
+    launch = db.relationship('UpcomingLaunch')
+
+    def __repr__(self):
+        """Show infor about user"""
+
+        return f"<Upcoming launch details: id = {self.my_launch_id}, user = {self.user_id}>"
 
 
 #####################################################################
