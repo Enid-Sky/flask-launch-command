@@ -5,6 +5,7 @@ from jinja2 import StrictUndefined
 from model import connect_to_db
 from flask import (Flask, render_template, request, flash, session, redirect)
 import requests
+import json
 
 
 app = Flask(__name__)
@@ -36,12 +37,11 @@ def upcoming_results():
     res = requests.get(
         "https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=5/?format=json")
 
-    data = res.json()
+    data = res.json()['results']
 
-    launches = data['results']
+    return render_template('upcoming_launches.html', data=data)
 
-    # return render_template('upcoming_launches.html', data=data, results=launches)
-    return render_template('upcoming_launches.html', data=data, id=launches[0]["name"])
+    # return render_template('upcoming_launches.html', data=data, id=launches[0]["name"])
 
 
 # @app.route("/register_user", methods=['POST'])
