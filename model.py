@@ -1,6 +1,7 @@
 """Models for launch command app"""
 
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime, date
 
 
 db = SQLAlchemy()
@@ -31,24 +32,40 @@ class User(db.Model):
 class UpcomingLaunch(db.Model):
     """Upcoming launch details"""
 
+    __tablename__ = "launches"
 
-class myLaunch(db.Model):
-    """Launch saved by user"""
+    upcomingLaunch_id = db.Column(db.Integer,
+                                  primary_key=True,
+                                  unique=True,
+                                  autoincrement=True)
 
+    launch_api_id = db.Column(db.Integer, nullable=True)
+    name = db.Column(db.String, nullable=False)
+    status_name = db.Column(db.String, nullable=False)
+    window_start = db.Column(db.DateTime, nullable=False)
+    mission_description = db.Column(db.String(200), nullable=False)
+    pad_location = db.Column(db.String, nullable=False)
+    image = db.Column(db.String(10000), nullable=False)
 
-class TwilioMessage(db.Model):
-    """Launch reminder message"""
+    def __repr__(self):
+        """Show infor about user"""
+
+        return f"<Upcoming launch details: id = {self.upcomingLaunch_id}, name = {self.name}>"
 
 
 #####################################################################
 # FEATURE MODELS
 
-class News(db.Model):
-    """Latest spaceflight news"""
+# class News(db.Model):
+#     """Latest spaceflight news"""
 
 
-class MyNews(db.Model):
-    """News article saved by user"""
+# class MyNews(db.Model):
+#     """News article saved by user"""
+
+
+# class TwilioMessage(db.Model):
+#     """Launch reminder message"""
 
 
 ##############################################################################
