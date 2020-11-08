@@ -23,16 +23,15 @@ class User(db.Model):
     password = db.Column(db.String(50), nullable=False)
     mobile_number = db.Column(db.String(15), nullable=False, unique=True)
 
-    # relationship
-    my_launch = db.relationship('myLaunch')
+    # my_launches = a list of MyLaunch objects
 
     def __repr__(self):
-        """Show infor about user"""
+        """Show info about user"""
 
         return f"<User info: id = {self.user_id}, name = {self.fname} {self.lname}>"
 
 
-class UpcomingLaunch(db.Model):
+class Upcominglaunch(db.Model):
     """Upcoming launch details"""
 
     __tablename__ = "launches"
@@ -42,31 +41,38 @@ class UpcomingLaunch(db.Model):
                                   unique=True,
                                   autoincrement=True)
 
-    launch_api_id = db.Column(db.Integer, nullable=True)
+    # represent keys from API Data
     name = db.Column(db.String, nullable=False)
     status_name = db.Column(db.String, nullable=False)
     window_start = db.Column(db.DateTime, nullable=False)
-    mission_description = db.Column(db.String(200), nullable=False)
+    mission_description = db.Column(db.String(1000), nullable=False)
     pad_location = db.Column(db.String, nullable=False)
     image = db.Column(db.String(10000), nullable=False)
 
-    # relationship
-    my_launch = db.relationship('myLaunch')
+    # my_launches = a list of MyLaunch objects
 
     def __repr__(self):
-        """Show infor about user"""
+        """Show name of upcoming launch"""
+        return f"<Upcoming launch name: {self.name}>"
 
-        return f"<Upcoming launch details: id = {self.upcomingLaunch_id}, name = {self.name}>"
+    def ul_dict(self):
+        """create launch dictionary"""
+        return {'name': self.name,
+                'status_name': self.status_name,
+                'window_start': self.window_start,
+                'mission_description': self.mission_description,
+                'pad_location': self.pad_location,
+                'image': self.image
+                }
 
 
-class myLaunch(db.Model):
+class Mylaunch(db.Model):
     """Launch saved by user"""
 
     __tablename__ = "my_launches"
 
     my_launch_id = db.Column(db.Integer,
                              primary_key=True,
-                             unique=True,
                              autoincrement=True)
 
     user_id = db.Column(db.Integer, db.ForeignKey(
@@ -74,14 +80,15 @@ class myLaunch(db.Model):
     launch_id = db.Column(db.Integer, db.ForeignKey(
         'launches.upcomingLaunch_id'), nullable=False)
 
-    # relationships
-    user = db.relationship('User')
-    launch = db.relationship('UpcomingLaunch')
+    # relationship references
+
+    launch = db.relationship('Upcominglaunch', backref='Mylaunch')
+    user = db.relationship('User', backref='Mylaunch')
 
     def __repr__(self):
         """Show infor about user"""
 
-        return f"<Upcoming launch details: id = {self.my_launch_id}, user = {self.user_id}>"
+        return f"<Upcoming launch details: id = {self.my_launch_id}, user = {self.user_id} launch_id = {self.upcomingLaunch_id}>"
 
 
 #####################################################################
