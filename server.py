@@ -50,16 +50,15 @@ def api_results():
 
     data = upcoming_launch_api()
 
-    details = {}
-    for launch in data:
+    # for launch in data:
 
-        print(launch['name'])
-        print(launch['status']['name'])
-        print(launch['window_start'])
-        print(launch['mission']['description'])
-        print(launch['pad']['location']['name'])
-        print(launch['image'])
-        print('#####################################')
+    #     print(launch['name'])
+    #     print(launch['status']['name'])
+    #     print(launch['window_start'])
+    #     print(launch['mission']['description'])
+    #     print(launch['pad']['location']['name'])
+    #     print(launch['image'])
+    #     print('#####################################')
 
     return jsonify({'results': data})
 
@@ -107,7 +106,6 @@ def api_results():
 # def login():
 #     """ Login route"""
 #     # return render_template('<name>.html')
-
 # @app.route("/register_user", methods=['POST'])
 # def register_user():
 #     """ Regiter user and save to database"""
