@@ -30,10 +30,23 @@ app.jinja_env.undefined = StrictUndefined
 @app.route("/")
 def homepage():
     """ Homepage route"""
+
     return render_template('homepage.html')
 
 
-# TESTING THIS ONE
+@app.route('/login')
+def login():
+    """Route to user login"""
+
+    return render_template('login.html')
+
+
+@app.route("/sign_up")
+def signup():
+    """Route to user registration"""
+
+    return render_template('signup.html')
+
 
 @app.route("/upcoming")
 def upcoming_results():
