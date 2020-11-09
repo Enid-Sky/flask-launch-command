@@ -1,11 +1,14 @@
 {%  extends 'base.html' %}
 
-{% block title %} Upcoming Launches {%endblock%}
+{% block title %} homepage{%endblock%}
 
 {%block body%}
 
-<h1>Upcoming Launches</h1>
-{{data}}
+<h1>UPCOMING LAUNCHES</h1>
 
+{% for launch in data %}
+    <h1>{{launch['name']}}</h1>
+   <h2>{{launch['status']['name']}}</h2>
+{% endfor %}
 
 {%endblock%}
