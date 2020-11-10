@@ -1,8 +1,8 @@
 """CRUD operations"""
 
 
-# from model import db, User, UpcomingLaunch, myLaunch, connect_to_db
-# from api import upcoming_launch_api
+from model import db, User, Upcominglaunch, Mylaunch, connect_to_db
+from api import upcoming_launch_api
 
 
 #######################################
@@ -14,17 +14,19 @@
 #######################################
 
 
-# def create_user(fname, lname, email, password, mobile_number):
+def create_user(fname, lname, email, password, mobile_number):
 
-#     # create a user
-#     user = User(fname=fname, lname=lname, email=email,
-#                 password=password, mobile_number=mobile_number)
+    # create a user
+    user = User(fname=fname, lname=lname, email=email,
+                password=password, mobile_number=mobile_number)
 
-#     # add user to database
-#     db.session.add(user)
-#     db.session.commit()
+    # add user to database
+    db.session.add(user)
+    db.session.commit()
 
-#     return user
+    print('::user created::')
+
+    return user
 
 
 #######################################
@@ -36,25 +38,33 @@
 #######################################
 
 
-# def create_upcoming_launch(launch_api_id, name, status_name, window_start, mission_description, pad_location, image):
+def create_upcoming_launch(name, status_name, window_start, mission_description, pad_location, image):
 
-#     # create a launch
-#     upcoming_launch = UpcomingLaunch(launch_api_id=launch_api_id, name=name, status_name=status_name,
-#                                      window_start=window_start, mission_description=mission_description, pad_loaction=pad_location, image=image)
+    # create a launch
+    upcoming_launch = Upcominglaunch(name=name, status_name=status_name,
+                                     window_start=window_start, mission_description=mission_description, pad_location=pad_location, image=image)
 
-#     # save launch to database
-#     db.session.add(upcoming_launch)
-#     db.session.commit()
+    # save launch to database
+    db.session.add(upcoming_launch)
+    db.session.commit()
 
-#     return upcoming_launch
+    print('::create upcoming launch::')
 
-
-# def seed_database(data):??
-
-
-# def save_launch()
+    return upcoming_launch
 
 
-# def countdown_timer(pass_in_start_window):
-#     """create coundown from start window"""
-#     return countdown
+# STILL NEEDS TESTING
+def my_launch_to_db(user_id, launch_id):
+    """Creates a saved launch by user"""
+
+    saved = Mylaunch(user_id=user_id, launch_id=launch_id)
+
+    db.session.add(saved)
+    db.session.commit()
+
+    return saved
+
+
+if __name__ == '__main__':
+    from server import app
+    connect_to_db(app)
