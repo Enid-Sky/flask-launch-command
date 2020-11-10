@@ -17,10 +17,10 @@ class User(db.Model):
                         unique=True,
                         autoincrement=True)
 
-    fname = db.Column(db.String(50), nullable=False)
-    lname = db.Column(db.String(50), nullable=False)
+    fname = db.Column(db.String(25), nullable=False)
+    lname = db.Column(db.String(25), nullable=False)
     email = db.Column(db.String(50), nullable=False, unique=True)
-    password = db.Column(db.String(50), nullable=False)
+    password = db.Column(db.String(25), nullable=False)
     mobile_number = db.Column(db.String(15), nullable=False, unique=True)
 
     # my_launches = a list of MyLaunch objects
@@ -42,12 +42,12 @@ class Upcominglaunch(db.Model):
                                   autoincrement=True)
 
     # represent keys from API Data
-    name = db.Column(db.String, nullable=False)
-    status_name = db.Column(db.String, nullable=False)
-    window_start = db.Column(db.DateTime, nullable=False)
-    mission_description = db.Column(db.String(1000), nullable=False)
-    pad_location = db.Column(db.String, nullable=False)
-    image = db.Column(db.String(10000), nullable=False)
+    name = db.Column(db.String(100), nullable=False)
+    status_name = db.Column(db.String(100), nullable=False)
+    window_start = db.Column(db.DateTime(100), nullable=False)
+    mission_description = db.Column(db.String(3000), nullable=False)
+    pad_location = db.Column(db.String(50), nullable=False)
+    image = db.Column(db.String(1000), nullable=False)
 
     # my_launches = a list of MyLaunch objects
 
