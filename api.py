@@ -9,13 +9,4 @@ def upcoming_launch_api():
     # data needs to be used in server route and to seed database?
     data = res.json()['results']
 
-    # for launch in data:
-
-    #     (launch['name'])
-    #     (launch['status']['name'])
-    #     (launch['window_start'])
-    #     (launch['mission']['description'])
-    #     (launch['pad']['location']['name'])
-    #     (launch['image'])
-
     return data
