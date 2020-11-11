@@ -4,11 +4,25 @@
 
 {%block body%}
 
+
+
+<h2>Navigation</h2>
+
+<li><a href="/upcoming">Upcoming Launches<a></li> 
+
 <h1>UPCOMING LAUNCHES</h1>
 
-{% for launch in data %}
-    <h1>{{launch['name']}}</h1>
-   <h2>{{launch['status']['name']}}</h2>
+<!-- Sometimes images show sometimes they don't -->
+{% for launch in launches %}
+<ul>
+    <li><img src="{{launch.image}}" width="350"px></li>
+    <li>{{launch.name}}</li>
+    <li>{{launch.window_start}}</li>
+    <li>{{launch.status_name}}</li>
+    <li>{{launch.pad_location}}</li>
+    <li><a href="{{launch.wiki_url}}">More info</a></li>
+
+</ul>
 {% endfor %}
 
 {%endblock%}
