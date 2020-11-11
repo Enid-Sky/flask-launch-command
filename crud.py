@@ -38,11 +38,11 @@ def create_user(fname, lname, email, password, mobile_number):
 #######################################
 
 
-def create_upcoming_launch(name, status_name, window_start, mission_description, pad_location, image):
+def create_upcoming_launch(name, status_name, window_start, wiki_url, pad_location, image):
 
     # create a launch
     upcoming_launch = Upcominglaunch(name=name, status_name=status_name,
-                                     window_start=window_start, mission_description=mission_description, pad_location=pad_location, image=image)
+                                     window_start=window_start, wiki_url=wiki_url, pad_location=pad_location, image=image)
 
     # save launch to database
     db.session.add(upcoming_launch)
@@ -51,6 +51,12 @@ def create_upcoming_launch(name, status_name, window_start, mission_description,
     print('::create upcoming launch::')
 
     return upcoming_launch
+
+
+def get_all_upcoming_launches():
+    """Return all launches"""
+
+    return Upcominglaunch.query.all()
 
 
 # STILL NEEDS TESTING
