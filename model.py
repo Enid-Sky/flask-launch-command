@@ -45,8 +45,8 @@ class Upcominglaunch(db.Model):
     name = db.Column(db.String(100), nullable=False)
     status_name = db.Column(db.String(100), nullable=False)
     window_start = db.Column(db.DateTime(100), nullable=False)
-    mission_description = db.Column(db.String(3000), nullable=False)
-    pad_location = db.Column(db.String(50), nullable=False)
+    wiki_url = db.Column(db.String(1000), nullable=False)
+    pad_location = db.Column(db.String(200), nullable=False)
     image = db.Column(db.String(1000), nullable=False)
 
     # my_launches = a list of MyLaunch objects
@@ -54,16 +54,6 @@ class Upcominglaunch(db.Model):
     def __repr__(self):
         """Show name of upcoming launch"""
         return f"<Upcoming launch name: {self.name}>"
-
-    def ul_dict(self):
-        """create launch dictionary"""
-        return {'name': self.name,
-                'status_name': self.status_name,
-                'window_start': self.window_start,
-                'mission_description': self.mission_description,
-                'pad_location': self.pad_location,
-                'image': self.image
-                }
 
 
 class Mylaunch(db.Model):
