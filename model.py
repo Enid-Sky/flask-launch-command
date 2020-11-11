@@ -53,7 +53,7 @@ class Upcominglaunch(db.Model):
 
     def __repr__(self):
         """Show name of upcoming launch"""
-        return f"<Upcoming launch name: {self.name}>"
+        return f"{self.name} {self.status_name} {self.window_start} {self.wiki_url} {self.pad_location} {self.image}"
 
 
 class Mylaunch(db.Model):
