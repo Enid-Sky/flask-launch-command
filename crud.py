@@ -29,6 +29,18 @@ def create_user(fname, lname, email, password, mobile_number):
     return user
 
 
+def get_user_by_id(user_id):
+    """Return a user by id"""
+
+    return User.query.filter(User.user_id == user_id).first()
+
+
+def get_user_by_email(email):
+    """Return a user by email"""
+
+    return User.query.filter(User.email == email).first()
+
+
 #######################################
 #                                     #
 #                                     #
