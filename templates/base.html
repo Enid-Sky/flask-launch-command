@@ -8,8 +8,23 @@
     </title>
 
     {% block head %}{% endblock %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+
+        <div class="alert alert-info alert-dismissible" role="alert">
+           <button type="button" class="close" data-dismiss="alert" aria-label="close">close</button> 
+           {{message}}
+        </div>
+        
+        {%endfor%}
+    {% endif %}
+{% endwith %}
+
     {% block body %}{% endblock %}
 
     {% block after_body %}{% endblock %}
