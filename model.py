@@ -28,7 +28,7 @@ class User(db.Model):
     def __repr__(self):
         """Show info about user"""
 
-        return f"<User info: id = {self.user_id}, name = {self.fname} {self.lname}>"
+        return f"<User info: id = {self.user_id}, name = {self.fname} {self.lname} email = {self.email}>"
 
 
 class Upcominglaunch(db.Model):
