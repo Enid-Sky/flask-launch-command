@@ -71,7 +71,6 @@ def get_all_upcoming_launches():
     return Upcominglaunch.query.all()
 
 
-# STILL NEEDS TESTING
 def my_launch_to_db(user_id, launch_id):
     """Creates a saved launch by user"""
 
@@ -81,6 +80,12 @@ def my_launch_to_db(user_id, launch_id):
     db.session.commit()
 
     return saved
+
+# TODO
+# get_saved_launches_by_user
+# query by user - use in server when user logs in to retrieve their saved launches
+
+# TODO: need to create a button under each upcoming launch. Which saves the launch to the user.
 
 
 if __name__ == '__main__':
