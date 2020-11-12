@@ -1,9 +1,38 @@
 {%  extends 'base.html' %}
 
-{% block title %} homepage{%endblock%}
+{% block title %} homepage {%endblock%}
 
 {%block body%}
 
-<h1>Homepage</h1>
+<h1>LAUNCH COMMAND</h1>
+<h2>Track upcoming rocket launches</h2>
+
+    <div class="form">
+    
+        <h2>Log in</h2>
+        
+        <form action="/login" method="POST">
+        
+          <label>
+            Email Address
+            <input type="text" name="email"/>
+          </label>
+
+          <label>
+            Password
+          </label>
+          <input type="password" name="password"/>
+
+        
+        <button type="submit">Log In</button>
+
+        <p><a href="/register">Register</a></p>
+        
+        </form>
+
+    </div>
+      
+  
+
 
 {%endblock%}
