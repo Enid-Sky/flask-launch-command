@@ -15,14 +15,15 @@ from api import upcoming_launch_api
 app = Flask(__name__)
 
 # session secret key
-app.secret_key = "launch"
+app.secret_key = "COMMAND"
 
 app.jinja_env.undefined = StrictUndefined
+
 
 #######################################
 #                                     #
 #                                     #
-#             ROUTES                  #
+#               USERS                 #
 #                                     #
 #                                     #
 #######################################
@@ -32,43 +33,24 @@ app.jinja_env.undefined = StrictUndefined
 def homepage():
     """ Homepage route"""
 
-    return render_template('login.html')
+    return render_template('homepage.html')
 
 
-@app.route('/login')
-def login():
-    """User Login"""
+@app.route('/register')
+def create_user():
 
-    email = request.form.get('email')
-    password = request.form.get('password')
-
-    user = crud.get_user_by_email(email)
-
-    if not user:
-        flash('Credentials do not exist. Please register or try again')
-        return redirect('/')
-    else:
-        if not password:
-            flash('Password is incorrect. Please try again')
-            return redirect('/')
-        else:
-            session['current_user'] = user.user_id
-            flash('Welcome!')
-
-            # get saved launches for user and send them to their saved launch page. NOT YET CREATED.
-
-        return render_template('/upcoming_launches')
+    return render_template('signup.html')
 
 
-@app.route('/register', methods=['POST'])
+@app.route('/', methods=['POST'])
 def register():
-    """ Regiter user and save to database"""
-    if request.method == 'POST':
-        fname = request.form.get('firstName')
-        lname = request.form.get('lastName')
-        email = request.form.get('email')
-        phone = request.form.get('phone')
-        password = request.form.get('password')
+    """ Register user and save to database"""
+
+    fname = request.form.get('firstName')
+    lname = request.form.get('lastName')
+    email = request.form.get('email')
+    phone = request.form.get('phone')
+    password = request.form.get('password')
 
     # check to see if user already exists
     user = crud.get_user_by_email(email)
@@ -76,39 +58,64 @@ def register():
     # if already exists, ask to sign in
     if user:
         flash('This email already exists. Please sign in.')
-        return redirect("/login")
-    else:
+        return redirect("/")
+    elif not user:
         user = crud.create_user(fname, lname, email, phone, password)
-        flash('Account created')
-        return redirect('/upcoming_launches')
+        if user:
+            session['user_id'] = user.user_id
+        return redirect('/upcoming')
+    else:
+        flash('Signup could not be completed. Please try again.')
 
-    return render_template('signup.html')
 
+@app.route('/login', methods=['POST'])
+def login():
+    """User Login"""
+
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    current_user = crud.get_user_by_email(email)
+
+    if current_user and current_user.password == password:
+        flash('Welcome!')
+
+        return redirect('/upcoming')
+    else:
+        flash('Either email or password are incorrect')
+        return redirect('/')
+
+
+#######################################
+#                                     #
+#                                     #
+#              Launches               #
+#                                     #
+#                                     #
+#######################################
 
 @app.route("/upcoming")
 def upcoming_results():
-    """ API results for upcoming launches route"""
+    """ Return page showing all upcoming launches"""
 
     launches = crud.get_all_upcoming_launches()
 
     return render_template('upcoming_launches.html', launches=launches)
 
 
-@app.route("/api/upcoming")
-def api_results():
-    """ API results"""
+# @app.route("/my_launches")
+# def user_saved_launches():
 
-    data = upcoming_launch_api()
+    # @app.route("/api/upcoming")
+    # def api_results():
+    #     """ API results"""
 
-    return jsonify({'results': data})
-
-
-# @app.route("/logout")
-# @app.route("/user_profile")
-# @app.route("/upcoming_launches")
-# @app.route("/saved_launches")
-
-
+    #     data = upcoming_launch_api()
+    #     return jsonify({'results': data})
+    # @app.route("/logout")
+    # @app.route("/user_profile")
+    # @app.route("/upcoming_launches")
+    # @app.route("/saved_launches")
 if __name__ == '__main__':
     connect_to_db(app)
     app.run(host='0.0.0.0', port=5000, debug=True)
