@@ -78,7 +78,7 @@ class Mylaunch(db.Model):
     def __repr__(self):
         """Show infor about user"""
 
-        return f"<Upcoming launch details: id = {self.my_launch_id}, user = {self.user_id} launch_id = {self.upcomingLaunch_id}>"
+        return f"<Upcoming launch details: id = {self.my_launch_id}, user = {self.user_id} launch_id = {self.launch_id}>"
 
 
 #####################################################################
