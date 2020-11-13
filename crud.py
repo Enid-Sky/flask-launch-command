@@ -50,42 +50,80 @@ def get_user_by_email(email):
 #######################################
 
 
-def create_upcoming_launch(name, status_name, window_start, wiki_url, pad_location, image):
+def create_launch(name, status_name, window_start, wiki_url, pad_location, image):
 
     # create a launch
-    upcoming_launch = Upcominglaunch(name=name, status_name=status_name,
-                                     window_start=window_start, wiki_url=wiki_url, pad_location=pad_location, image=image)
+    launch = Upcominglaunch(name=name, status_name=status_name,
+                            window_start=window_start, wiki_url=wiki_url, pad_location=pad_location, image=image)
 
     # save launch to database
-    db.session.add(upcoming_launch)
+    db.session.add(launch)
     db.session.commit()
 
     print('::create upcoming launch::')
 
-    return upcoming_launch
+    return launch
 
 
 def get_all_upcoming_launches():
-    """Return all launches"""
+    """Return all launches to display on upcoming launches page"""
 
     return Upcominglaunch.query.all()
 
 
 def my_launch_to_db(user_id, launch_id):
-    """Creates a saved launch by user"""
+    """Create and return launch that has been saved by session user"""
 
-    saved = Mylaunch(user_id=user_id, launch_id=launch_id)
+    saved_launch = Mylaunch(user_id=user_id, launch_id=launch_id)
 
-    db.session.add(saved)
+    db.session.add(saved_launch)
     db.session.commit()
 
-    return saved
+    return saved_launch
+
+
+def delete_my_launch(launch_id, user_id):
+    """Remove a user's saved launch from the database"""
+
+    delete_launch = Mylaunch.query.filter(
+        Mylaunch.launch_id == launch_id, Mylaunch.user_id == user_id).first()
+    # delete_launch = Mylaunch.query.filter(launch_id)
+
+    # delete_launch = Mylaunch.query.filter(myLaunch.launch_id == launch_id).first()
+
+    # delete_launch = Mylaunch(user_id=user_id, launch_id=launch_id)
+
+    # delete_launch = Mylaunch.query.filter(Mylaunch.launch_id=launch_id, Mylaunch.user_id=user_id).first()
+
+    db.session.delete(delete_launch)
+    db.session.commit()
+
+    return delete_launch
+
+
+# def delete_my_launch_from_db(user_id):
+
+
+def get_saved_by_id(user_id):
+    """Find launch that has been saved by session user"""
+
+    return Mylaunch.query.filter(Mylaunch.user_id == user_id).all()
+
+
+def get_all_saved_by_id(user_id):
+    """Find all launches that have been saved by session user"""
+
+    launch_ids = []
+    user_saved_launches = Mylaunch.query.filter(
+        Mylaunch.user_id == user_id).all()
+
+    for launch in user_saved_launches:
+        launch_ids.append(launch.launch_id)
+    return launch_ids
+
 
 # TODO
-# get_saved_launches_by_user
-# query by user - use in server when user logs in to retrieve their saved launches
-
-# TODO: need to create a button under each upcoming launch. Which saves the launch to the user.
+# def pretty_time():
 
 
 if __name__ == '__main__':
