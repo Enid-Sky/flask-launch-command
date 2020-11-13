@@ -1,0 +1,35 @@
+{%  extends 'base.html' %}
+
+{% block title %} homepage{%endblock%}
+
+
+{%block body%}
+
+
+<li><a href="/upcoming">HOME<a></li> 
+<li><a href="/logout">LOGOUT<a></li> 
+<li><a href="/upcoming">UPCOMING LAUNCHES<a></li> 
+
+<h1>MY LAUNCHES</h1>
+
+<!-- Sometimes images show sometimes they don't -->
+{% for launch in my_launches %}
+
+<ul>
+
+    <li><img src="{{launch.launch.image}}" width="250"px></li>
+    <li>{{launch.launch.name}}</li>
+    <li>{{launch.launch.window_start}}</li>
+    <li>{{launch.launch.status_name}}</li>
+    <li>{{launch.launch.pad_location}}</li>
+    <li><a href="{{launch.launch.wiki_url}}">More info</a></li>
+    <li>{{launch.launch_id}}</li>
+
+    <form action="/delete_launch" method="POST">
+    <input id="delete_input" name="delete_launch" type="hidden" value="{{launch.launch_id}}">
+    <button id=delete_input type="submit" class="delete" value="{{launch.launch_id}}">Delete</button>
+    </form> 
+</ul>
+{% endfor %}
+
+{%endblock%}
