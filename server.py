@@ -59,13 +59,12 @@ def register():
     if user:
         flash('This email already exists. Please sign in.')
         return redirect("/")
-    elif not user:
-        user = crud.create_user(fname, lname, email, phone, password)
-        if user:
-            session['user_id'] = user.user_id
-        return redirect('/upcoming')
     else:
-        flash('Signup could not be completed. Please try again.')
+        user = crud.create_user(fname, lname, email, phone, password)
+        session['user_id'] = user.user_id
+        session['email'] = user.email
+        flash('Account created! Please sign into your account')
+        return redirect('/')
 
 
 @app.route('/login', methods=['POST'])
@@ -75,15 +74,28 @@ def login():
     email = request.form.get('email')
     password = request.form.get('password')
 
-    current_user = crud.get_user_by_email(email)
+    user = crud.get_user_by_email(email)
 
-    if current_user and current_user.password == password:
-        flash('Welcome!')
+    if password == '' or email == '':
+        flash('Sorry, login failed. Please try again.')
+        return redirect("/")
 
+    if user:
+        session['user_id'] = user.user_id
+        session['email'] = user.email
+        flash(f'Welcome back, {user.fname}!')
         return redirect('/upcoming')
+
     else:
-        flash('Either email or password are incorrect')
+        flash('Either email or password are incorrect. Please try again.')
         return redirect('/')
+
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    flash('Logged out')
+    return render_template('homepage.html')
 
 
 #######################################
@@ -94,7 +106,8 @@ def login():
 #                                     #
 #######################################
 
-@app.route("/upcoming")
+
+@app.route('/upcoming')
 def upcoming_results():
     """ Return page showing all upcoming launches"""
 
@@ -103,13 +116,58 @@ def upcoming_results():
     return render_template('upcoming_launches.html', launches=launches)
 
 
+@app.route('/my_launches')
+def my_launch_results():
+    """ Return page showing all of user's saved launches"""
+
+    user_id = session.get('user_id')
+    my_launches = crud.get_saved_by_id(user_id)
+
+    return render_template('my_launches.html', my_launches=my_launches)
+
+
+@app.route('/add_launch', methods=['POST'])
+def add_a_launch():
+
+    launch_id = request.form.get('launch')
+    user_id = session.get('user_id')
+    launch = crud.my_launch_to_db(user_id, launch_id)
+
+    name = launch.launch.name
+    flash(f'You are now following the upcoming launch for {name}')
+
+    return redirect("/upcoming")
+
+
+@app.route('/delete_launch', methods=['POST'])
+def delete_a_launch():
+
+    launch_id_d = request.form.get('delete_launch')
+    user_id_d = session.get('user_id')
+    launch = crud.delete_my_launch_from_db(user_id_d, launch_id_d)
+
+    # launch_name = launch.launch.name
+
+    flash(f'{launch} has been deleted.')
+
+    return redirect("/my_launches")
+
+
+# @app.route('/addtocart', methods='POST'])
+# def add_to_cart();
+#     """Add new launch to user's follow list"""
+
+#     user_id = session.get('user_id')
+#     launch_id = request.form.get('thevalue')
+
+
+#     return render_template('saved_launches.html', user_id=user_id, )
+
 # @app.route("/my_launches")
 # def user_saved_launches():
-
     # @app.route("/api/upcoming")
     # def api_results():
     #     """ API results"""
-
     #     data = upcoming_launch_api()
     #     return jsonify({'results': data})
     # @app.route("/logout")
