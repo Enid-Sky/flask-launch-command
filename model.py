@@ -49,8 +49,6 @@ class Upcominglaunch(db.Model):
     pad_location = db.Column(db.String(200), nullable=False)
     image = db.Column(db.String(1000), nullable=False)
 
-    # my_launches = a list of MyLaunch objects
-
     def __repr__(self):
         """Show name of upcoming launch"""
         return f"{self.name} {self.status_name} {self.window_start} {self.wiki_url} {self.pad_location} {self.image}"
@@ -71,14 +69,60 @@ class Mylaunch(db.Model):
         'launches.upcomingLaunch_id'), nullable=False)
 
     # relationship references
-
     launch = db.relationship('Upcominglaunch', backref='Mylaunch')
     user = db.relationship('User', backref='Mylaunch')
 
     def __repr__(self):
-        """Show infor about user"""
+        """Show info about user"""
 
         return f"<Upcoming launch details: id = {self.my_launch_id}, user = {self.user_id} launch_id = {self.launch_id}>"
+
+
+class News(db.Model):
+    """Creates news articles"""
+
+    __tablename__ = "news_articles"
+
+    news_id = db.Column(db.Integer,
+                        primary_key=True,
+                        autoincrement=True)
+
+    title = db.Column(db.String(200), nullable=False)
+    url = db.Column(db.String(300), nullable=False)
+    image = db.Column(db.String(300), nullable=False)
+    news_site = db.Column(db.String(100), nullable=False)
+    summary = db.Column(db.String(400), nullable=False)
+    date = db.Column(db.DateTime(50), nullable=False)
+
+    def __repr__(self):
+        """Show info about news """
+
+        return f"<News: id = {self.news_id}, title = {self.title} summary = {self.summary}>"
+
+
+class My_news(db.Model):
+    """News saved by user"""
+
+    __tablename__ = "my_news_articles"
+
+    my_news_id = db.Column(db.Integer,
+                           primary_key=True,
+                           autoincrement=True)
+
+    user_id = db.Column(db.Integer, db.ForeignKey(
+        'users.user_id'), nullable=False)
+
+    news_id = db.Column(db.Integer, db.ForeignKey(
+        'news_articles.news_id'), nullable=False)
+
+    # relationship references
+    news_user = db.relationship('User', backref='My_news')
+    saved_news_article = db.relationship('News', backref='My_news')
+
+    def __repr__(self):
+        """Show info about news """
+
+        return f"<News: id = {self.news_id} >"
 
 
 #####################################################################
