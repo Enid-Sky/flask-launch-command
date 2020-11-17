@@ -1,7 +1,7 @@
 """CRUD operations"""
 
 
-from model import db, User, Upcominglaunch, Mylaunch, connect_to_db
+from model import db, User, Upcominglaunch, Mylaunch, News, My_news, connect_to_db
 from api import upcoming_launch_api
 
 
@@ -82,26 +82,15 @@ def my_launch_to_db(user_id, launch_id):
     return saved_launch
 
 
-def delete_my_launch(launch_id, user_id):
+def delete_my_launch(my_launch_id, launch_name):
     """Remove a user's saved launch from the database"""
 
-    delete_launch = Mylaunch.query.filter(
-        Mylaunch.launch_id == launch_id, Mylaunch.user_id == user_id).first()
-    # delete_launch = Mylaunch.query.filter(launch_id)
-
-    # delete_launch = Mylaunch.query.filter(myLaunch.launch_id == launch_id).first()
-
-    # delete_launch = Mylaunch(user_id=user_id, launch_id=launch_id)
-
-    # delete_launch = Mylaunch.query.filter(Mylaunch.launch_id=launch_id, Mylaunch.user_id=user_id).first()
+    delete_launch = Mylaunch.query.get(my_launch_id)
 
     db.session.delete(delete_launch)
     db.session.commit()
 
-    return delete_launch
-
-
-# def delete_my_launch_from_db(user_id):
+    return launch_name
 
 
 def get_saved_by_id(user_id):
@@ -121,11 +110,32 @@ def get_all_saved_by_id(user_id):
         launch_ids.append(launch.launch_id)
     return launch_ids
 
+#######################################
+#                                     #
+#                                     #
+#              News Articles          #
+#                                     #
+#                                     #
+#######################################
+
+
+def create_news_article(title, url, image, news_site, summary, date):
+
+    # create a news article
+    news_item = News(title=title, url=url, image=image,
+                     news_site=news_site, summary=summary, date=date)
+
+    # save news article to database
+    db.session.add(news_item)
+    db.session.commit()
+
+    print('::create news article,::')
+
+    return news_item
+
 
 # TODO
 # def pretty_time():
-
-
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
