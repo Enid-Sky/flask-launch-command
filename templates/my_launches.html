@@ -23,11 +23,12 @@
     <li>{{launch.launch.status_name}}</li>
     <li>{{launch.launch.pad_location}}</li>
     <li><a href="{{launch.launch.wiki_url}}">More info</a></li>
-    <li>{{launch.launch_id}}</li>
+    <li>{{launch.my_launch_id}}</li>
 
     <form action="/delete_launch" method="POST">
-    <input id="delete_input" name="delete_launch" type="hidden" value="{{launch.launch_id}}">
-    <button id=delete_input type="submit" class="delete" value="{{launch.launch_id}}">Delete</button>
+        <input id="launch_name" name="launch_name" type="hidden" value="{{launch.launch.name}}">
+            <input id="delete_input" name="delete_launch" type="hidden" value="{{launch.my_launch_id}}">
+                <button id=delete_input type="submit" class="delete" value="{{launch.my_launch_id}}">Delete</button>
     </form> 
 </ul>
 {% endfor %}
