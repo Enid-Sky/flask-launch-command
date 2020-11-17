@@ -7,9 +7,10 @@ from datetime import datetime
 import crud
 import server
 
-from model import db, User, Upcominglaunch, Mylaunch, connect_to_db
+from model import db, User, Upcominglaunch, Mylaunch, News, My_news, connect_to_db
 
 from api import upcoming_launch_api
+from api import news_api
 
 # Database setup
 os.system('dropdb launchcommand')
@@ -23,17 +24,19 @@ db.create_all()
 
 launch_data = upcoming_launch_api()
 
-# Store list of launches for later use and testing
-upcoming_launch_list = []
+
+# TODO: refractor code
+# upcomingLaunchList = launch_data.map(
+#     launch => crud.createUpcomingLaunch(launch.name, launch.status.name....)
+# )
 
 for launch in launch_data:
     name, status_name, window_start, wiki_url, pad_location, image = (
         launch['name'], launch['status']['name'], launch['window_start'], launch['pad']['wiki_url'], launch['pad']['location']['name'], launch['image'])
 
-    launch = crud.create_upcoming_launch(
+    create_launch = crud.create_launch(
         name=name, status_name=status_name, window_start=window_start, wiki_url=wiki_url, pad_location=pad_location, image=image)
 
-    upcoming_launch_list.append(launch)
 
 # TEST USERS
 
@@ -44,14 +47,17 @@ user2 = crud.create_user('Lacey', 'Anderson', 'lAnderson13@nasa.com',
                          'nasapass123', '4147893214')
 
 
-# TEST MY LAUNCH
+all_news = news_api()
 
-# for saved_launch in range(3):
-# user3 = crud.create_user('Lane', 'Young', 'lYoung13@nasa.com',
-#                          'nasapass11', '5147893212')
+index = 0
+while index < len(all_news):
 
-# launch_choice = choice(upcoming_launch_list)
-# crud.my_launch_to_db(user_id, launch_choice)
+    for article in all_news[index]:
 
-# user_launch = upcoming_launch_list[0]
-# crud.my_launch_to_db(1, user_launch)
+        title, url, image, news_site, summary, date = (
+            all_news[index][article]['title'], all_news[index][article]['url'], all_news[index][article]['imageUrl'], all_news[index][article]['imageUrl']['newsSite'], all_news[index][article]['summary'], all_news[index][article]['publishedAt'])
+
+        create_article = crud.create_news_article(
+            title=title, url=url, image=image, news_site=news_site, summary=summary, date=date)
+
+        index += 1
