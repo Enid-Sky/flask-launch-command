@@ -10,7 +10,7 @@ import server
 
 from model import db, User, Upcominglaunch, Mylaunch, News, My_news, connect_to_db
 
-from api import upcoming_launch_api
+# from api import upcoming_launch_api
 
 
 # Database setup
@@ -21,15 +21,17 @@ connect_to_db(server.app)
 db.create_all()
 
 
-# CREATE LAUNCH DATABASE
-
-launch_data = upcoming_launch_api()
-
-
 # TODO: refractor code
 # upcomingLaunchList = launch_data.map(
 #     launch => crud.createUpcomingLaunch(launch.name, launch.status.name....)
 # )
+
+# SEED UPCOMING LAUNCH DATABASE
+# def upcoming_launch_api():
+res = requests.get(
+    "https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=5/?format=json")
+
+launch_data = res.json()['results']
 
 for launch in launch_data:
     name, status_name, window_start, wiki_url, pad_location, image = (
@@ -38,8 +40,10 @@ for launch in launch_data:
     create_launch = crud.create_launch(
         name=name, status_name=status_name, window_start=window_start, wiki_url=wiki_url, pad_location=pad_location, image=image)
 
+    # return create_launch
 
-# TEST USERS
+
+# SEED USER DATABASE
 
 user1 = crud.create_user('Chris', 'Cassidy', 'cCassidy12@nasa.com',
                          'nasapass098', '3147893212')
@@ -47,20 +51,20 @@ user1 = crud.create_user('Chris', 'Cassidy', 'cCassidy12@nasa.com',
 user2 = crud.create_user('Lacey', 'Anderson', 'lAnderson13@nasa.com',
                          'nasapass123', '4147893214')
 
-# SEED DATABASE WITH NEWS ARTICLES
 
+# SEED NEWS ARTICLES DATABASE
 
-def news_api():
-    news_res = requests.get(
-        "https://test.spaceflightnewsapi.net/api/v2/articles?_limit=10")
+# def news_api():
+news_res = requests.get(
+    "https://test.spaceflightnewsapi.net/api/v2/articles?_limit=10")
 
-    news_data = news_res.json()
+news_data = news_res.json()
 
-    for dic in news_data:
-        title, url, image, news_site, summary, date = (
-            dic['title'], dic['url'], dic['imageUrl'], dic['newsSite'], dic['summary'], dic['publishedAt'])
+for dic in news_data:
+    title, url, image, news_site, summary, date = (
+        dic['title'], dic['url'], dic['imageUrl'], dic['newsSite'], dic['summary'], dic['publishedAt'])
 
-        create_article = crud.create_news_article(
-            title=title, url=url, image=image, news_site=news_site, summary=summary, date=date)
+    create_article = crud.create_news_article(
+        title=title, url=url, image=image, news_site=news_site, summary=summary, date=date)
 
-    return create_article
+    # return create_article
