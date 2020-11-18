@@ -1,6 +1,7 @@
 """Script to seed database."""
 
 import os
+import requests
 import json
 from random import choice, randint
 from datetime import datetime
@@ -10,7 +11,7 @@ import server
 from model import db, User, Upcominglaunch, Mylaunch, News, My_news, connect_to_db
 
 from api import upcoming_launch_api
-from api import news_api
+
 
 # Database setup
 os.system('dropdb launchcommand')
@@ -47,17 +48,19 @@ user2 = crud.create_user('Lacey', 'Anderson', 'lAnderson13@nasa.com',
                          'nasapass123', '4147893214')
 
 
-all_news = news_api()
+def news_api():
+    news_res = requests.get(
+        "https://test.spaceflightnewsapi.net/api/v2/articles?_limit=10")
 
-index = 0
-while index < len(all_news):
+    news_data = news_res.json()
 
-    for article in all_news[index]:
-
+    for dic in news_data:
         title, url, image, news_site, summary, date = (
-            all_news[index][article]['title'], all_news[index][article]['url'], all_news[index][article]['imageUrl'], all_news[index][article]['imageUrl']['newsSite'], all_news[index][article]['summary'], all_news[index][article]['publishedAt'])
+            dic['title'], dic['url'], dic['imageUrl'], dic['newsSite'], dic['summary'], dic['publishedAt'])
+
+        # print(title, url, image, news_site, summary, date)
 
         create_article = crud.create_news_article(
             title=title, url=url, image=image, news_site=news_site, summary=summary, date=date)
 
-        index += 1
+    return create_article
