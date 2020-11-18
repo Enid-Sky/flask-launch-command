@@ -143,14 +143,14 @@ def add_a_launch():
 def delete_a_launch():
     launch_name = request.form.get('launch_name')
     my_launch_id = request.form.get('delete_launch')
-    crud.delete_my_launch(my_launch_id)
+    crud.delete_my_launch(my_launch_id, launch_name)
 
     flash(f'{launch_name} has been unfollowed.')
 
     return redirect("/my_launches")
 
 
-# @app.route('/addtocart', methods='POST'])
+# @app.route('/addtocart', methods='POST'])q
 # def add_to_cart();
 #     """Add new launch to user's follow list"""
 
