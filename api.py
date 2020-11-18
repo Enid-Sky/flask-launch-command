@@ -17,7 +17,18 @@ def news_api():
 
     news_data = news_res.json()
 
-    return(news_data)
-
     ########################
     # print(news_data[0]['title'])
+    # print(news_data)
+
+    # return(news_data)
+
+    # for dic in news_data:
+    #     for key in dic:
+    #         print(dic[key])
+
+    for dic in news_data:
+        title, url, image, news_site, summary, date = (
+            dic['title'], dic['url'], dic['imageUrl'], dic['newsSite'], dic['summary'], dic['publishedAt'])
+
+        print(title, url, image, news_site, summary, date)
