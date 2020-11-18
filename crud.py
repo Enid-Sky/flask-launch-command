@@ -113,7 +113,7 @@ def get_all_saved_by_id(user_id):
 #######################################
 #                                     #
 #                                     #
-#              News Articles          #
+#            News Articles            #
 #                                     #
 #                                     #
 #######################################
@@ -151,7 +151,7 @@ def save_news_articles(user_id, news_id):
     return saved_article
 
 
-def delete_news_article(my_news_id):
+def delete_news_article(my_news_id, news_title):
     """Remove user's saved news article from database"""
 
     delete_article = My_news.query.get(my_news_id)
@@ -159,7 +159,7 @@ def delete_news_article(my_news_id):
     db.session.delete(delete_article)
     db.session.commit()
 
-    return delete_article
+    return news_title
 
 
 # TODO
