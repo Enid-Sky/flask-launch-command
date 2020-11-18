@@ -117,7 +117,7 @@ class My_news(db.Model):
 
     # relationship references
     news_user = db.relationship('User', backref='My_news')
-    saved_news_article = db.relationship('News', backref='My_news')
+    news_article = db.relationship('News', backref='My_news')
 
     def __repr__(self):
         """Show info about news """
