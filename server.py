@@ -149,28 +149,24 @@ def delete_a_launch():
 
     return redirect("/my_launches")
 
+#######################################
+#                                     #
+#                                     #
+#            News Articles            #
+#                                     #
+#                                     #
+#######################################
 
-# @app.route('/addtocart', methods='POST'])q
-# def add_to_cart();
-#     """Add new launch to user's follow list"""
 
-#     user_id = session.get('user_id')
-#     launch_id = request.form.get('thevalue')
+@app.route('/all_news')
+def all_news_results():
+    """Return all news articles"""
+
+    all_news = crud.get_all_news_articles()
+
+    return render_template('all_news.html', all_news=all_news)
 
 
-#     return render_template('saved_launches.html', user_id=user_id, )
-
-# @app.route("/my_launches")
-# def user_saved_launches():
-    # @app.route("/api/upcoming")
-    # def api_results():
-    #     """ API results"""
-    #     data = upcoming_launch_api()
-    #     return jsonify({'results': data})
-    # @app.route("/logout")
-    # @app.route("/user_profile")
-    # @app.route("/upcoming_launches")
-    # @app.route("/saved_launches")
 if __name__ == '__main__':
     connect_to_db(app)
     app.run(host='0.0.0.0', port=5000, debug=True)
