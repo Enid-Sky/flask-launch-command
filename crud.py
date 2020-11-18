@@ -140,7 +140,7 @@ def get_all_news_articles():
     return News.query.all()
 
 
-def save_news_articles(user_id, news_id):
+def save_news_article(user_id, news_id):
     """Save news articles to database"""
 
     saved_article = My_news(user_id=user_id, news_id=news_id)
