@@ -134,6 +134,34 @@ def create_news_article(title, url, image, news_site, summary, date):
     return news_item
 
 
+def get_all_news_articles():
+    """Return all news articles"""
+
+    return News.query.all()
+
+
+def save_news_articles(user_id, news_id):
+    """Save news articles to database"""
+
+    saved_article = My_news(user_id=user_id, news_id=news_id)
+
+    db.session.add(saved_article)
+    db.session.commit()
+
+    return saved_article
+
+
+def delete_news_article(my_news_id):
+    """Remove user's saved news article from database"""
+
+    delete_article = My_news.query.get(my_news_id)
+
+    db.session.delete(delete_article)
+    db.session.commit()
+
+    return delete_article
+
+
 # TODO
 # def pretty_time():
 if __name__ == '__main__':
