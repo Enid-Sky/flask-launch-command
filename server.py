@@ -167,6 +167,19 @@ def all_news_results():
     return render_template('all_news.html', all_news=all_news)
 
 
+@app.route('/add_article', methods=['POST'])
+def save_article():
+    article_id = request.form.get('add_article')
+    user_id = session.get('user_id')
+    article = crud.save_news_article(user_id, article_id)
+
+    # article_name = article.news_article.name
+
+    flash(f'{article} has been added to your news library.')
+
+    return redirect('/all_news')
+
+
 if __name__ == '__main__':
     connect_to_db(app)
     app.run(host='0.0.0.0', port=5000, debug=True)
