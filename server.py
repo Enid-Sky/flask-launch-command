@@ -141,14 +141,11 @@ def add_a_launch():
 
 @app.route('/delete_launch', methods=['POST'])
 def delete_a_launch():
+    launch_name = request.form.get('launch_name')
+    my_launch_id = request.form.get('delete_launch')
+    crud.delete_my_launch(my_launch_id)
 
-    launch_id_d = request.form.get('delete_launch')
-    user_id_d = session.get('user_id')
-    launch = crud.delete_my_launch_from_db(user_id_d, launch_id_d)
-
-    # launch_name = launch.launch.name
-
-    flash(f'{launch} has been deleted.')
+    flash(f'{launch_name} has been unfollowed.')
 
     return redirect("/my_launches")
 
