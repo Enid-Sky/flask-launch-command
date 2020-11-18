@@ -180,6 +180,17 @@ def save_article():
     return redirect('/all_news')
 
 
+@app.route('/delete_article', methods=['POST'])
+def delete_news_article():
+    news_title = request.form.get('article_name')
+    my_news_id = request.form.get('delete_article')
+    crud.delete_news_article(my_news_id, news_title)
+
+    flash(f'{news_title} has been deleted.')
+
+    return redirect("/my_news")
+
+
 if __name__ == '__main__':
     connect_to_db(app)
     app.run(host='0.0.0.0', port=5000, debug=True)
