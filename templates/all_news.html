@@ -10,7 +10,7 @@
 <li><a href="/logout">LOGOUT<a></li> 
 <li><a href="/upcoming">UPCOMING LAUNCHES<a></li> 
 
-<h1>MY LAUNCHES</h1>
+<h1>LATEST NEWS</h1>
 
 <!-- Sometimes images show sometimes they don't -->
 {% for article in all_news %}
@@ -20,13 +20,13 @@
     <li><img src="{{article.image}}" width="250"px></li>
     <li>{{article.title}}</li>
     <li>{{article.news_site}}</li>
-    <li>{{article.date}</li>
+    <li>{{article.date}}</li>
     <li>{{article.summary}}</li>
     <li><a href="{{article.url}}">More info</a></li>
 
 
     <form action="/add_article" method="POST">
-        <input id="save_article" name="add_article" type="hidden" value="{{article.title}}">
+        <input id="save_article" name="add_article" type="hidden" value="{{article.news_id}}">
             <button id=add_news type="submit" value="{{article.news_id}}">Add</button>
     </form>
 </ul>
