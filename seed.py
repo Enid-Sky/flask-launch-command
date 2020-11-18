@@ -47,6 +47,8 @@ user1 = crud.create_user('Chris', 'Cassidy', 'cCassidy12@nasa.com',
 user2 = crud.create_user('Lacey', 'Anderson', 'lAnderson13@nasa.com',
                          'nasapass123', '4147893214')
 
+# SEED DATABASE WITH NEWS ARTICLES
+
 
 def news_api():
     news_res = requests.get(
@@ -57,8 +59,6 @@ def news_api():
     for dic in news_data:
         title, url, image, news_site, summary, date = (
             dic['title'], dic['url'], dic['imageUrl'], dic['newsSite'], dic['summary'], dic['publishedAt'])
-
-        # print(title, url, image, news_site, summary, date)
 
         create_article = crud.create_news_article(
             title=title, url=url, image=image, news_site=news_site, summary=summary, date=date)
