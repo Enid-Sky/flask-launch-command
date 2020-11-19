@@ -1,0 +1,39 @@
+{%  extends 'base.html' %}
+
+{% block title %} homepage{%endblock%}
+
+
+{%block body%}
+
+<div>
+    <li class ="nav-item"><a class="nav-link" href="/upcoming">HOME<a></li> 
+    <li class ="nav-item"><a class="nav-link" href="/logout">LOGOUT<a></li> 
+    <li class ="nav-item"><a class="nav-link" href="/upcoming">UPCOMING LAUNCHES<a></li>
+    <li class ="nav-item"><a class="nav-link" href="/my_launches">MY LAUNCHES<a></li> 
+    <li class ="nav-item"><a class="nav-link" href="/all_news">LATEST NEWS<a></li> 
+</div>
+
+<h1>MY LAUNCHES</h1>
+
+<!-- Sometimes images show sometimes they don't -->
+{% for news in my_news %}
+
+<ul>
+
+    <li><img src="{{news.news_article.image}}" width="250"px></li>
+    <li>{{news.news_article.title}}</li>
+    <li>{{news.news_article.news_site}}</li>
+    <li>{{news.news_article.date}}</li>
+    <li>{{news.news_article.summary}}</li>
+    <li><a href="{{news.news_article.url}}">More info</a></li>
+
+
+    <form action="/delete_article" method="POST">
+        <input id="article_name" name="article_name" type="hidden" value="{{news.news_article.title}}">
+            <input id="delete_input" name="delete_article" type="hidden" value="{{news.my_news_id}}">
+                <button id=delete_news_article type="submit" class="delete" value="{{news.my_news_id}}">Delete</button>
+    </form> 
+</ul>
+{% endfor %}
+
+{%endblock%}
