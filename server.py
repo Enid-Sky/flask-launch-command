@@ -167,15 +167,25 @@ def all_news_results():
     return render_template('all_news.html', all_news=all_news)
 
 
+@app.route('/my_news')
+def my_news_results():
+    """ Return page showing all of user's saved news articles"""
+
+    user_id = session.get('user_id')
+    my_news = crud.get_saved_news_by_id(user_id)
+
+    return render_template('my_news.html', my_news=my_news)
+
+
 @app.route('/add_article', methods=['POST'])
 def save_article():
     article_id = request.form.get('add_article')
     user_id = session.get('user_id')
     article = crud.save_news_article(user_id, article_id)
 
-    # article_name = article.news_article.name
+    name = article.news_article.title
 
-    flash(f'{article} has been added to your news library.')
+    flash(f'{name} has been added to your news library.')
 
     return redirect('/all_news')
 
