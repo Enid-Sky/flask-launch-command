@@ -77,6 +77,14 @@ class Mylaunch(db.Model):
 
         return f"<Upcoming launch details: id = {self.my_launch_id}, user = {self.user_id} launch_id = {self.launch_id}>"
 
+#######################################
+#                                     #
+#                                     #
+#            News Articles            #
+#                                     #
+#                                     #
+#######################################
+
 
 class News(db.Model):
     """Creates news articles"""
@@ -125,23 +133,40 @@ class My_news(db.Model):
         return f"<News: id = {self.news_id} >"
 
 
-#####################################################################
-# FEATURE MODELS
+#######################################
+#                                     #
+#                                     #
+#            Messaging                #
+#                                     #
+#                                     #
+#######################################
 
-# class News(db.Model):
-#     """Latest spaceflight news"""
+class Messaging(db.Model):
+    """Return messaging info"""
 
+    __tablename__ = "messages"
 
-# class MyNews(db.Model):
-#     """News article saved by user"""
+    message_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(
+        'users.user_id'), nullable=False)
+    launch_id = db.Column(db.Integer, db.ForeignKey(
+        'launches.upcomingLaunch_id'), nullable=False)
 
+# NOTE: might need to add column for message content and dates?
 
-# class TwilioMessage(db.Model):
-#     """Launch reminder message"""
+# NOTE: might need to refer to my launches instead of upcoming launches instead
+
+    # relationship references
+    launch = db.relationship('Upcominglaunch', backref='Messaging')
+    user = db.relationship('User', backref='Messaging')
+
+    def __repr__(self):
+        """Show name of upcoming launch"""
+        return f"Message_id:{self.message_id}, user id: {self.status_name}, launch id: {self.launch_id}, launch name: {self.launch_id.launch.name}"
 
 
 ##############################################################################
-# DATABASE FUNCTIONS
+
 
 def connect_to_db(flask_app, db_uri='postgresql:///launchcommand', echo=True):
     """Connect the database to the Flask app"""
