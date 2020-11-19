@@ -5,14 +5,17 @@
 
 {%block body%}
 
-
-<li><a href="/logout">LOGOUT<a></li> 
-<li><a href="/my_launches">MY LAUNCHES<a></li>
-<li><a href="/all_news">Latest News<a></li>  
+<div>
+    <li class ="nav-item"><a class="nav-link" href="/upcoming">HOME<a></li> 
+    <li class ="nav-item"><a class="nav-link" href="/logout">LOGOUT<a></li> 
+    <li class ="nav-item"><a class="nav-link" href="/my_launches">MY LAUNCHES<a></li>
+    <li class ="nav-item"><a class="nav-link" href="/all_news">LATEST NEWS<a></li>
+    <li class ="nav-item"><a class="nav-link" href="/my_news">MY NEWS<a></li> 
+</div>
 
 <h1>UPCOMING LAUNCHES</h1>
 
-<!-- Sometimes images show sometimes they don't -->
+
 {% for launch in launches %}
 
 <ul>
