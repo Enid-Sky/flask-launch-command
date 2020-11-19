@@ -151,6 +151,12 @@ def save_news_article(user_id, news_id):
     return saved_article
 
 
+def get_saved_news_by_id(user_id):
+    """Find launch that has been saved by session user"""
+
+    return My_news.query.filter(My_news.user_id == user_id).all()
+
+
 def delete_news_article(my_news_id, news_title):
     """Remove user's saved news article from database"""
 
