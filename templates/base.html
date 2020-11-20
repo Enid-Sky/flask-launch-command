@@ -12,7 +12,6 @@
     crossorigin="anonymous"
   ></script>
 
-
     
   </head>
   {% endblock %}
@@ -35,14 +34,16 @@
     {% block body %}{% endblock %}
 
     {% block after_body %}{% endblock %}
+
     <script>
     $("document").ready(function(){
         setTimeout(function(){
             $("div.alert").remove();
-        }, 2000 ); // 5 secs
+        }, 2000 ); // 2 secs
     
     });
 </script>
+
   </body>
 </html>
 
