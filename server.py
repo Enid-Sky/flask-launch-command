@@ -33,7 +33,9 @@ app.jinja_env.undefined = StrictUndefined
 def homepage():
     """ Homepage route"""
 
-    return render_template('homepage.html')
+    next_launch_start = crud.get_next_upcoming_launch()
+
+    return render_template('homepage.html', next_launch_start=next_launch_start.window_start)
 
 
 @app.route('/register')
@@ -95,7 +97,7 @@ def login():
 def logout():
     session.clear()
     flash('Logged out')
-    return render_template('homepage.html')
+    return redirect('/')
 
 
 #######################################
