@@ -110,6 +110,15 @@ def get_all_saved_by_id(user_id):
         launch_ids.append(launch.launch_id)
     return launch_ids
 
+
+def get_next_upcoming_launch():
+    """Return next upcoming launch to display in countdown"""
+
+    next_launch_time = Upcominglaunch.query.first()
+
+    return next_launch_time
+
+
 #######################################
 #                                     #
 #                                     #
