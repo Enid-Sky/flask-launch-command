@@ -202,6 +202,32 @@ def delete_news_article():
 
     return redirect("/my_news")
 
+#######################################
+#                                     #
+#                                     #
+#            HELPER ROUTES            #
+#                                     #
+#                                     #
+#######################################
+
+
+@app.route('/data', methods=['GET', 'POST'])
+def get_data():
+
+    # GET request
+    if request.method == 'GET':
+        test = crud.get_next_upcoming_launch()
+        date = test.window_start
+        print(date)
+        message = {'date': date}
+        print(message)
+        return jsonify(message)
+
+    # POST request
+    if request.method == 'POST':
+        print(request.get_json())
+        return 'Success', 200
+
 
 if __name__ == '__main__':
     connect_to_db(app)
