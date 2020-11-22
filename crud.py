@@ -114,7 +114,7 @@ def get_all_saved_by_id(user_id):
 def get_next_upcoming_launch():
     """Return next upcoming launch to display in countdown"""
 
-    next_launch_time = Upcominglaunch.query.first()
+    next_launch_time = Upcominglaunch.query.get(2)
 
     return next_launch_time
 
