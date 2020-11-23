@@ -14,7 +14,9 @@
 <h2>NEXT LAUNCH:</h2>
 
 <H1 id="countdown"></H1>
+<H1 class="countdown"></H1>
 <h5 id='countdownText'>Days Hours Minutes Seconds</h5>
+<h3 id='date'></h3>
 </div><br>
 
 
@@ -47,11 +49,11 @@
 
 
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         window.launch = {
           time: '{{ next_launch_start }}'
         }
-    </script>
+    </script> -->
         
     <script src="{{url_for('static', filename='app.js')}}"></script>
 {%endblock%}
