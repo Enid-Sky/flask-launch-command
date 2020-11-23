@@ -10,6 +10,10 @@ function createCountdown() {
         .then (function (data) {
             console.log('GET response:');
             console.log(data.date);
+            console.log(data.name);
+
+            // Output the rocket name in an element
+            document.getElementById("rocketName").innerHTML = `${data.name}`;
     
             const countDownDate = new Date(data.date).getTime();
             // console.log('window')
@@ -33,7 +37,7 @@ function createCountdown() {
             // Output the result in an element with id="countdown
             document.getElementById("countdown").innerHTML = `${days} : ${hours} : ${minutes} : ${seconds}`;
                 
-            // If the count down is over, 
+            // If the count down is over, display ended 
                 if (timeRemaining < 0) {
                     clearInterval(currentCountdown);
                     document.getElementById("countdown").innerHTML = "ENDED";
