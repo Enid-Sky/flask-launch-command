@@ -22,8 +22,8 @@
 
     <li><img src="{{launch.launch.image}}" width="250"px></li>
     <li>{{launch.launch.name}}</li>
-    <li>{{launch.launch.window_start}}</li>
-    <li>{{launch.launch.status_name}}</li>
+    <li>{{launch.launch.window_start.strftime("%B %d %I:%M:%S %p")}}</li>
+    <li>Status: {{launch.launch.status_name}}</li>
     <li>{{launch.launch.pad_location}}</li>
     <li><a href="{{launch.launch.wiki_url}}">More info</a></li>
 
