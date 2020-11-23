@@ -1,6 +1,6 @@
 """CRUD operations"""
 
-
+import datetime
 from model import db, User, Upcominglaunch, Mylaunch, News, My_news, connect_to_db
 from api import upcoming_launch_api
 
@@ -69,6 +69,14 @@ def get_all_upcoming_launches():
     """Return all launches to display on upcoming launches page"""
 
     return Upcominglaunch.query.all()
+
+
+def get_time():
+    """Return all datetimes for upcoming launches"""
+
+    time = db.session.query(Upcominglaunch.window_start).all()
+
+    return time
 
 
 def my_launch_to_db(user_id, launch_id):
