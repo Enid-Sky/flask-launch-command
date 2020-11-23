@@ -8,6 +8,7 @@ from flask import (Flask, render_template, request,
 import requests
 import json
 import crud
+import datetime
 
 from api import upcoming_launch_api
 
@@ -114,6 +115,10 @@ def upcoming_results():
     """ Return page showing all upcoming launches"""
 
     launches = crud.get_all_upcoming_launches()
+    # time = crud.get_time()
+
+    # x = datetime.datetime(time)
+    # times = x.strftime("%c")
 
     return render_template('upcoming_launches.html', launches=launches)
 
