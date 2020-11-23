@@ -216,10 +216,10 @@ def get_data():
 
     # GET request
     if request.method == 'GET':
-        test = crud.get_next_upcoming_launch()
-        date = test.window_start
-        print(date)
-        message = {'date': date}
+        db_data = crud.get_next_upcoming_launch()
+        date = db_data.window_start
+        name = db_data.name
+        message = {'date': date, 'name': name}
         print(message)
         return jsonify(message)
 
