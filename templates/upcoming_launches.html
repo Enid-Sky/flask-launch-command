@@ -28,10 +28,25 @@
 
     <form action="/add_launch" method="POST">
     <input id="follow_input" name="launch" type="hidden" value="{{launch.upcomingLaunch_id}}">
-    <button id=follow type="submit" class="save" value="{{launch.upcomingLaunch_id}}">Follow</button>
+    <button id=follow type="submit" class="save" onclick="myFunction()" value="{{launch.upcomingLaunch_id}}">Follow</button>
     </form>
 
 </ul>
+
+<script>
+
+    function myFunction() {
+        let change = document.getElementById("follow");
+        if (change.innerHTML == "Follow")
+        {
+            change.innerHTML = "Following";
+        }
+        else {
+            change.innerHTML = "Follow";
+        }
+    }
+
+</script>
 {% endfor %}
 
 {%endblock%}
