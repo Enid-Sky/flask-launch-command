@@ -222,9 +222,13 @@ def get_data():
     # GET request
     if request.method == 'GET':
         db_data = crud.get_next_upcoming_launch()
+        db_data_2 = crud.get_next_next_upcoming_launch()
         date = db_data.window_start
         name = db_data.name
-        message = {'date': date, 'name': name}
+        second_launch = db_data_2.window_start
+        second_name = db_data_2.name
+        message = {'date': date, 'name': name,
+                   'second_launch': second_launch, 'second_name': second_name}
         print(message)
         return jsonify(message)
 
