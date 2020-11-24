@@ -11,23 +11,26 @@ function createCountdown() {
             console.log('GET response:');
             console.log(data.date);
             console.log(data.name);
+            console.log(data.second_name)
+            console.log(data.second_launch)
 
             // Output the rocket name in an element
             document.getElementById("rocketName").innerHTML = `${data.name}`;
-    
-            const countDownDate = new Date(data.date).getTime();
+        
             // console.log('window')
             // console.log(window.launch.time);
 
             // Update the count down every 1 second
             const currentCountdown = setInterval(function() {
+            
+            const countDownDate = new Date(data.date).getTime();
 
             // Get today's date and time
             const now = new Date().getTime();
                 
             // Time difference between now and the countdown time
-            const timeRemaining = countDownDate - now;
-                
+            let timeRemaining = countDownDate - now;
+            
             // Time calculations for days, hours, minutes and seconds
             const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -37,14 +40,16 @@ function createCountdown() {
             // Output the result in an element with id="countdown
             document.getElementById("countdown").innerHTML = `${days} : ${hours} : ${minutes} : ${seconds}`;
                 
-            // If the count down is over, display ended 
+            // If the count down is over, display 0,0,0,0 and name of next launch
                 if (timeRemaining < 0) {
+                    document.getElementById("rocketName").innerHTML = `${data.second_name}`;
                     clearInterval(currentCountdown);
-                    document.getElementById("countdown").innerHTML = "ENDED";
+                    document.getElementById("countdown").innerHTML = "0: 0: 0: 0";
+
                 }
             }, 1000);
         });
-        return data.date;
+        // return data.date;
 }
 
 // FUNCTION CALLS
