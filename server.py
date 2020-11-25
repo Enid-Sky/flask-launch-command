@@ -143,7 +143,12 @@ def add_a_launch():
     name = launch.launch.name
     flash(f'You are now following the upcoming launch for {name}')
 
-    return redirect("/upcoming")
+    return redirect('/upcoming')
+
+# @app.route('/add_launch')
+# def show_launch_page():
+
+#     return render_template('upcoming_launches.html')
 
 
 @app.route('/delete_launch', methods=['POST'])
