@@ -18,22 +18,26 @@
 
 {% for launch in my_launches %}
 
-<ul>
+    <ul>
 
-    <li><img src="{{launch.launch.image}}" width="250"px></li>
-    <li>{{launch.launch.name}}</li>
-    <li>{{launch.launch.window_start.strftime("%B %d %I:%M:%S %p")}}</li>
-    <li>Status: {{launch.launch.status_name}}</li>
-    <li>{{launch.launch.pad_location}}</li>
-    <li><a href="{{launch.launch.wiki_url}}">More info</a></li>
+        <li><img src="{{launch.launch.image}}" width="250"px></li>
+        <li>{{launch.launch.name}}</li>
+        <li>{{launch.launch.window_start | formatdatetime}}</li>
+        <li>Status: {{launch.launch.status_name}}</li>
+        <li>{{launch.launch.pad_location}}</li>
+        <li><a href="{{launch.launch.wiki_url}}">More info</a></li>
 
 
-    <form action="/delete_launch" method="POST">
-        <input id="launch_name" name="launch_name" type="hidden" value="{{launch.launch.name}}">
-            <input id="delete_input" name="delete_launch" type="hidden" value="{{launch.my_launch_id}}">
-                <button id=delete_input type="submit" class="delete" value="{{launch.my_launch_id}}">Delete</button>
-    </form> 
-</ul>
+        <form action="/delete_launch" method="POST">
+            <input id="launch_name" name="launch_name" type="hidden" value="{{launch.launch.name}}">
+                <input id="delete_input" name="delete_launch" type="hidden" value="{{launch.my_launch_id}}">
+                    <button id=delete_input type="submit" class="delete" value="{{launch.my_launch_id}}">Delete</button>
+        </form> 
+    </ul>
+
+    {%else%}
+        <h4>No results found.</h4>
+
 {% endfor %}
 
 {%endblock%}
