@@ -82,7 +82,8 @@ def get_time():
 def my_launch_to_db(user_id, launch_id):
     """Create and return launch that has been saved by session user"""
 
-    saved_launch = Mylaunch(user_id=user_id, launch_id=launch_id)
+    saved_launch = Mylaunch(
+        user_id=user_id, launch_id=launch_id)
 
     db.session.add(saved_launch)
     db.session.commit()
@@ -122,7 +123,7 @@ def get_all_saved_by_id(user_id):
 def get_next_upcoming_launch():
     """Return next upcoming launch to display in countdown"""
 
-    next_launch_time = Upcominglaunch.query.get(2)
+    next_launch_time = Upcominglaunch.query.get(1)
 
     return next_launch_time
 
