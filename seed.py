@@ -54,17 +54,21 @@ user2 = crud.create_user('Lacey', 'Anderson', 'lAnderson13@nasa.com',
 
 # SEED NEWS ARTICLES DATABASE
 
-# def news_api():
-news_res = requests.get(
-    "https://test.spaceflightnewsapi.net/api/v2/articles?_limit=10")
+def news_api():
 
-news_data = news_res.json()
+    news_res = requests.get(
+        "https://spaceflightnewsapi.net/api/v2/articles?_limit=15")
 
-for dic in news_data:
-    title, url, image, news_site, summary, date = (
-        dic['title'], dic['url'], dic['imageUrl'], dic['newsSite'], dic['summary'], dic['publishedAt'])
+    news_data = news_res.json()
 
-    create_article = crud.create_news_article(
-        title=title, url=url, image=image, news_site=news_site, summary=summary, date=date)
+    for dic in news_data:
+        title, url, image, news_site, summary, date = (
+            dic['title'], dic['url'], dic['imageUrl'], dic['newsSite'], dic['summary'], dic['publishedAt'])
 
-    # return create_article
+        create_article = crud.create_news_article(
+            title=title, url=url, image=image, news_site=news_site, summary=summary, date=date)
+
+    return create_article
+
+
+news_api()
