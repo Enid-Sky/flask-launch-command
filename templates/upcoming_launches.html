@@ -15,38 +15,39 @@
 
 <h1>UPCOMING LAUNCHES</h1>
 
+{% if saved_launches == None %}
+    <h2>No results found.</h2>
+
+{%endif%} 
+
 {% for launch in launches %}
 
+    {% if launch.upcomingLaunch_id not in saved_launches %}
+        
 <ul>
-
     <li><img src="{{launch.image}}" width="250"px></li>
     <li>{{launch.name}}</li>
-    <li id="liftoff">{{launch.window_start.strftime("%B %d %I:%M:%S %p")}}</li>
+    <li id="liftoff">{{launch.window_start | formatdatetime}} (PST)</li>
     <li>Status: {{launch.status_name}}</li>
-    <li>{{launch.pad_location}}</li>
+    <li>Location: {{launch.pad_location}}</li>
     <li><a href="{{launch.wiki_url}}">More info</a></li>
 
     <form action="/add_launch" method="POST">
 
-    <input id="follow_input" name="launch" type="hidden" value="{{launch.upcomingLaunch_id}}">
-
-    <button id=follow>Follow</button>
-    </form>
-
-
-
+        <input id="follow_input" name="launch" type="hidden" value="{{launch.upcomingLaunch_id}}">
+    
+            <button id=follow type="submit" class="save" onclick="myFunc(event)" value="{{launch.upcomingLaunch_id}}">Follow</button>
+    
+        </form>
 </ul>
+   
+    {%endif%}   
+
 {% endfor %}
 
-
-<script>
-    document.getElementById("follow").addEventListener("click", function() {
-      console.log("WERE IN THE CONSOLE")
-      document.getElementById("follow").innerHTML = "Following";
-    });
-    </script>
-
-
-
-
 {%endblock%}
+
+
+ 
+
+
