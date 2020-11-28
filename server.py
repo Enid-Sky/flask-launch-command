@@ -10,6 +10,9 @@ import json
 import crud
 import datetime
 
+from pytz import timezone
+
+
 from api import upcoming_launch_api
 
 
@@ -18,7 +21,7 @@ app = Flask(__name__)
 # session secret key
 app.secret_key = "COMMAND"
 
-app.jinja_env.undefined = StrictUndefined
+# app.jinja_env.undefined = StrictUndefined
 
 
 #######################################
@@ -53,20 +56,23 @@ def register():
     lname = request.form.get('lastName')
     email = request.form.get('email')
     phone = request.form.get('phone')
-    password = request.form.get('password')
+    password_1 = request.form.get('password')
+    password_2 = request.form.get('confirm')
 
-    # check to see if user already exists
+    # check to see if user email already exists
     user = crud.get_user_by_email(email)
 
     # if already exists, ask to sign in
     if user:
         flash('This email already exists. Please sign in.')
         return redirect("/")
+    elif password_1 != password_2:
+        flash('Passwords do not match.')
     else:
-        user = crud.create_user(fname, lname, email, phone, password)
+        user = crud.create_user(fname, lname, email, phone, password_1)
         session['user_id'] = user.user_id
         session['email'] = user.email
-        flash('Account created! Please sign into your account')
+        flash('Account created! Please sign in.')
         return redirect('/')
 
 
@@ -114,13 +120,11 @@ def logout():
 def upcoming_results():
     """ Return page showing all upcoming launches"""
 
+    user_id = session.get('user_id')
     launches = crud.get_all_upcoming_launches()
-    # time = crud.get_time()
+    saved_launches = crud.get_all_saved_by_id(user_id)
 
-    # x = datetime.datetime(time)
-    # times = x.strftime("%c")
-
-    return render_template('upcoming_launches.html', launches=launches)
+    return render_template('upcoming_launches.html', launches=launches, saved_launches=saved_launches)
 
 
 @app.route('/my_launches')
@@ -143,12 +147,7 @@ def add_a_launch():
     name = launch.launch.name
     flash(f'You are now following the upcoming launch for {name}')
 
-    return redirect('/upcoming')
-
-# @app.route('/add_launch')
-# def show_launch_page():
-
-#     return render_template('upcoming_launches.html')
+    return redirect("/upcoming")
 
 
 @app.route('/delete_launch', methods=['POST'])
@@ -191,6 +190,8 @@ def my_news_results():
 
 @app.route('/add_article', methods=['POST'])
 def save_article():
+    """Display title of saved news article"""
+
     article_id = request.form.get('add_article')
     user_id = session.get('user_id')
     article = crud.save_news_article(user_id, article_id)
@@ -204,6 +205,8 @@ def save_article():
 
 @app.route('/delete_article', methods=['POST'])
 def delete_news_article():
+    """ Delete selected news article from user's saved articles"""
+
     news_title = request.form.get('article_name')
     my_news_id = request.form.get('delete_article')
     crud.delete_news_article(my_news_id, news_title)
@@ -221,8 +224,25 @@ def delete_news_article():
 #######################################
 
 
+# Format UTC time to Pacific time
+@app.template_filter('formatdatetime')
+def format_datetime(value, format="%B %d %I:%M:%S %p"):
+    """Format a date time"""
+
+    west = timezone('US/Pacific')
+    test = value.astimezone(west)
+
+    return test.strftime(format)
+
+
+# Register jinja template date filter
+app.jinja_env.filters['formatdatetime'] = format_datetime
+
+
+# Get data to and from the homepage
 @app.route('/data', methods=['GET', 'POST'])
 def get_data():
+    """GET and POST requests for data related to the homepage"""
 
     # GET request
     if request.method == 'GET':
