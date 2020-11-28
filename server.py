@@ -9,8 +9,8 @@ import requests
 import json
 import crud
 import datetime
-
 from pytz import timezone
+from twilio.rest import Client
 
 
 from api import upcoming_launch_api
@@ -261,6 +261,23 @@ def get_data():
     if request.method == 'POST':
         print(request.get_json())
         return 'Success', 200
+
+
+#######################################
+#                                     #
+#                                     #
+#              Messaging              #
+#                                     #
+#                                     #
+#######################################
+
+@app.route('/reminders', methods=['POST'])
+def get_reminder():
+
+    reminder = request.form.get('reminder')
+    flash(f'A reminder has been sent.')
+
+    return reminder
 
 
 if __name__ == '__main__':
