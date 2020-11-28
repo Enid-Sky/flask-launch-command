@@ -47,7 +47,7 @@ class Upcominglaunch(db.Model):
     window_start = db.Column(db.DateTime(100), nullable=False)
     wiki_url = db.Column(db.String(1000), nullable=False)
     pad_location = db.Column(db.String(200), nullable=False)
-    image = db.Column(db.String(1000), nullable=False)
+    image = db.Column(db.String(1000), nullable=True)
 
     def __repr__(self):
         """Show name of upcoming launch"""
@@ -99,7 +99,7 @@ class News(db.Model):
     url = db.Column(db.String(300), nullable=False)
     image = db.Column(db.String(300), nullable=False)
     news_site = db.Column(db.String(100), nullable=False)
-    summary = db.Column(db.String(400), nullable=False)
+    summary = db.Column(db.String(1000), nullable=False)
     date = db.Column(db.DateTime(50), nullable=False)
 
     def __repr__(self):
