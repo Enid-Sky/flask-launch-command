@@ -27,12 +27,19 @@
         <li>{{launch.launch.pad_location}}</li>
         <li><a href="{{launch.launch.wiki_url}}">More info</a></li>
 
+        <form action="/reminders" method="POST">  
+            <input type="radio" name="reminder" value="yes">
+            <label>Text reminder?</label>
+            <button id ="send_reminder" type="submit" value="yes">Send</button>
+
+        </form>
 
         <form action="/delete_launch" method="POST">
             <input id="launch_name" name="launch_name" type="hidden" value="{{launch.launch.name}}">
                 <input id="delete_input" name="delete_launch" type="hidden" value="{{launch.my_launch_id}}">
                     <button id=delete_input type="submit" class="delete" value="{{launch.my_launch_id}}">Delete</button>
         </form> 
+
     </ul>
 
     {%else%}
