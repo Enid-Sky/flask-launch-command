@@ -1,4 +1,8 @@
 'use strict';
+
+
+// countdown
+
 function createCountdown() {
     const promise = fetch('/data');
 
