@@ -10,9 +10,8 @@ import json
 import crud
 import datetime
 from pytz import timezone
+import os
 from twilio.rest import Client
-
-
 from api import upcoming_launch_api
 
 
@@ -271,13 +270,25 @@ def get_data():
 #                                     #
 #######################################
 
-@app.route('/reminders', methods=['POST'])
-def get_reminder():
+# @app.route('/api/reminders', methods=['POST'])
+def send_reminder():
 
-    reminder = request.form.get('reminder')
+    send_to = os.environ['USER_NUMBER']
+    twilio = os.environ['TWILIO_NUMBER']
+    account_sid = os.environ['ACCOUNT_SID']
+    auth_token = os.environ['AUTH_TOKEN']
+    client = Client(account_sid, auth_token)
+
+    message = client.messages.create(
+        to=send_to,
+        from_=twilio,
+        body='STARLINK NOV 28 2020'
+    )
+    # reminder = request.form.get('reminder')
     flash(f'A reminder has been sent.')
+    print(message.sid)
 
-    return reminder
+    return 'message sent'
 
 
 if __name__ == '__main__':
