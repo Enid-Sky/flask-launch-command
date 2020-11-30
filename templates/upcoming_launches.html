@@ -5,6 +5,51 @@
 
 {%block body%}
 
+
+<!-- Button to Open the Modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Notify
+    </button>
+    <div class="container">
+
+
+      
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+            
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Launch Notification</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              
+              <!-- Modal body -->
+              <div class="modal-body">
+                Would you like to receive a text reminder regarding the next launch?
+              </div>
+              
+              <!-- Modal footer -->
+              <div class="modal-footer">
+
+                <form action="/reminders" method="POST">
+                <button id="reminder" type="submit" class="btn btn-danger" name = 'reminder' value='notify'>Yes</button>
+                </form> 
+
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+
+
+
 <div>
     <li class ="nav-item"><a class="nav-link" href="/upcoming">HOME<a></li> 
     <li class ="nav-item"><a class="nav-link" href="/logout">LOGOUT<a></li> 
@@ -14,11 +59,6 @@
 </div>
 
 <h1>UPCOMING LAUNCHES</h1>
-
-{% if saved_launches == None %}
-    <h2>No results found.</h2>
-
-{%endif%} 
 
 {% for launch in launches %}
 
@@ -36,7 +76,7 @@
 
         <input id="follow_input" name="launch" type="hidden" value="{{launch.upcomingLaunch_id}}">
     
-            <button id=follow type="submit" class="save" onclick="myFunc(event)" value="{{launch.upcomingLaunch_id}}">Follow</button>
+            <button id=follow type="submit" class="save" value="{{launch.upcomingLaunch_id}}">Follow</button>
     
         </form>
 </ul>
@@ -45,6 +85,14 @@
 
 {% endfor %}
 
+<script>
+    $("#myModalID").modal('toggle');
+    $('#myModalID').modal('show');
+    $('#myModalID').modal('hide');
+</script>
+<!-- <script>$("reminder").click(function(){
+    $.post
+})</script> -->
 {%endblock%}
 
 
