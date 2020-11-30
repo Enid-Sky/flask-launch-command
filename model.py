@@ -99,7 +99,7 @@ class News(db.Model):
     url = db.Column(db.String(300), nullable=False)
     image = db.Column(db.String(300), nullable=False)
     news_site = db.Column(db.String(100), nullable=False)
-    summary = db.Column(db.String(1000), nullable=False)
+    summary = db.Column(db.String(2000), nullable=False)
     date = db.Column(db.DateTime(50), nullable=False)
 
     def __repr__(self):
