@@ -8,44 +8,6 @@
 {%block body%}
 
 
-<!-- Button to Open the Modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    Notify
-    </button>
-    <div class="container">
-
-
-      
-        <!-- The Modal -->
-        <div class="modal fade" id="myModal">
-          <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-            
-              <!-- Modal Header -->
-              <div class="modal-header">
-                <h4 class="modal-title">Launch Notification</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-              </div>
-              
-              <!-- Modal body -->
-              <div class="modal-body">
-                Would you like to receive a text reminder regarding the next launch?
-              </div>
-              
-              <!-- Modal footer -->
-              <div class="modal-footer">
-                <form>
-                <button type="submit" class="btn btn-danger" data-dismiss="modal">Yes</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                </form> 
-              </div>
-              
-            </div>
-          </div>
-        </div>
-        
-      </div>
-
 
 <div>
     <li class ="nav-item"><a class="nav-link" href="/upcoming">HOME<a></li> 
@@ -90,8 +52,6 @@
 {% endfor %}
 
 
-<script>
-    $('#myModal').modal('show');
-</script>
+
 
 {%endblock%}
