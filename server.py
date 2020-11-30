@@ -13,6 +13,7 @@ from pytz import timezone
 import os
 from twilio.rest import Client
 from api import upcoming_launch_api
+import secrets
 
 
 app = Flask(__name__)
@@ -214,6 +215,45 @@ def delete_news_article():
 
     return redirect("/my_news")
 
+
+#######################################
+#                                     #
+#                                     #
+#              Messaging              #
+#                                     #
+#                                     #
+#######################################
+
+
+@app.route('/reminders', methods=['POST'])
+def send_reminder():
+    """Send sms reminder"""
+
+    notify = request.form.get('reminder')
+    print(notify)
+
+    launch_reminder = crud.get_next_upcoming_launch()
+    name = launch_reminder.name
+    start = launch_reminder.window_start
+    date = format_datetime(start, format="%B %d %I:%M:%S %p")
+
+    send_to = os.environ['USER_NUMBER']
+    twilio = os.environ['TWILIO_NUMBER']
+    account_sid = os.environ['ACCOUNT_SID']
+    auth_token = os.environ['AUTH_TOKEN']
+    client = Client(account_sid, auth_token)
+
+    message = client.messages.create(
+        to=send_to,
+        from_=twilio,
+        body=f'Upcoming launch reminder for {name}. Liftoff is scheduled for {date}.'
+    )
+    flash(f'A reminder has been sent.')
+
+    print(message.sid)
+
+    return redirect("/upcoming")
+
 #######################################
 #                                     #
 #                                     #
@@ -260,35 +300,6 @@ def get_data():
     if request.method == 'POST':
         print(request.get_json())
         return 'Success', 200
-
-
-#######################################
-#                                     #
-#                                     #
-#              Messaging              #
-#                                     #
-#                                     #
-#######################################
-
-# @app.route('/api/reminders', methods=['POST'])
-def send_reminder():
-
-    send_to = os.environ['USER_NUMBER']
-    twilio = os.environ['TWILIO_NUMBER']
-    account_sid = os.environ['ACCOUNT_SID']
-    auth_token = os.environ['AUTH_TOKEN']
-    client = Client(account_sid, auth_token)
-
-    message = client.messages.create(
-        to=send_to,
-        from_=twilio,
-        body='STARLINK NOV 28 2020'
-    )
-    # reminder = request.form.get('reminder')
-    flash(f'A reminder has been sent.')
-    print(message.sid)
-
-    return 'message sent'
 
 
 if __name__ == '__main__':
