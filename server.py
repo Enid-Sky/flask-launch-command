@@ -238,14 +238,14 @@ def send_reminder():
     date = format_datetime(start, format="%B %d %I:%M:%S %p")
 
     send_to = os.environ['USER_NUMBER']
-    twilio = os.environ['TWILIO_NUMBER']
+    sender = os.environ['SENDER']
     account_sid = os.environ['ACCOUNT_SID']
     auth_token = os.environ['AUTH_TOKEN']
     client = Client(account_sid, auth_token)
 
     message = client.messages.create(
         to=send_to,
-        from_=twilio,
+        from_=sender,
         body=f'Upcoming launch reminder for {name}. Liftoff is scheduled for {date}.'
     )
     flash(f'A reminder has been sent.')
