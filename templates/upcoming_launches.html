@@ -1,6 +1,7 @@
 {%  extends 'base.html' %}
 
-{% block title %} homepage{%endblock%}
+{% block title %} UPCOMING LAUNCHES {%endblock%}
+
 
 
 {%block body%}
@@ -34,10 +35,10 @@
               <div class="modal-footer">
 
                 <form action="/reminders" method="POST">
-                <button id="reminder" type="submit" class="btn btn-danger" name = 'reminder' value='notify'>Yes</button>
+                <button id="reminder" type="submit" class="btn" name = 'reminder' value='notify'>Yes</button>
                 </form> 
 
-                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                <button type="button" class="btn" data-dismiss="modal">No</button>
                 
               </div>
               
@@ -49,14 +50,6 @@
 
 
 
-
-<div>
-    <li class ="nav-item"><a class="nav-link" href="/upcoming">HOME<a></li> 
-    <li class ="nav-item"><a class="nav-link" href="/logout">LOGOUT<a></li> 
-    <li class ="nav-item"><a class="nav-link" href="/my_launches">MY LAUNCHES<a></li>
-    <li class ="nav-item"><a class="nav-link" href="/all_news">LATEST NEWS<a></li>
-    <li class ="nav-item"><a class="nav-link" href="/my_news">MY NEWS<a></li> 
-</div>
 
 <h1>UPCOMING LAUNCHES</h1>
 
