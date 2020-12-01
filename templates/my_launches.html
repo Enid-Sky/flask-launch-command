@@ -2,23 +2,14 @@
 
 
 
-{% block title %} homepage{%endblock%}
+{% block title %} MY LAUNCHES {%endblock%}
 
 
 {%block body%}
 
 
-
-<div>
-    <li class ="nav-item"><a class="nav-link" href="/upcoming">HOME<a></li> 
-    <li class ="nav-item"><a class="nav-link" href="/logout">LOGOUT<a></li> 
-    <li class ="nav-item"><a class="nav-link" href="/upcoming">UPCOMING LAUNCHES<a></li> 
-    <li class ="nav-item"><a class="nav-link" href="/all_news">LATEST NEWS<a></li> 
-    <li class ="nav-item"><a class="nav-link" href="/my_news">MY NEWS<a></li> 
-
-</div>
-
 <h1>MY LAUNCHES</h1>
+
 
 {% for launch in my_launches %}
 
@@ -31,12 +22,7 @@
         <li>{{launch.launch.pad_location}}</li>
         <li><a href="{{launch.launch.wiki_url}}">More info</a></li>
 
-        <form action="/reminders" method="POST">  
-            <input type="radio" name="reminder" value="yes">
-            <label>Text reminder?</label>
-            <button id ="send_reminder" type="submit" value="yes">Send</button>
 
-        </form>
 
         <form action="/delete_launch" method="POST">
             <input id="launch_name" name="launch_name" type="hidden" value="{{launch.launch.name}}">
@@ -51,7 +37,7 @@
 
 {% endfor %}
 
-
-
-
 {%endblock%}
+
+
+
