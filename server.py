@@ -42,6 +42,13 @@ def homepage():
     return render_template('homepage.html', next_launch_start=next_launch_start.window_start)
 
 
+@app.route("/about")
+def about():
+    """ About page route"""
+
+    return render_template('about.html')
+
+
 @app.route('/register')
 def create_user():
 
@@ -246,7 +253,7 @@ def send_reminder():
     message = client.messages.create(
         to=send_to,
         from_=sender,
-        body=f'Upcoming launch reminder for {name}. Liftoff is scheduled for {date}.'
+        body=f'Upcoming launch reminder for {name}. Liftoff is scheduled for {date} PST.'
     )
     flash(f'A reminder has been sent.')
 
