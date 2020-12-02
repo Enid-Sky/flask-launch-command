@@ -15,7 +15,7 @@
     <li><img src="{{news.news_article.image}}" width="250"px></li>
     <li>{{news.news_article.title}}</li>
     <li>{{news.news_article.news_site}}</li>
-    <li>{{news.news_article.date}}</li>
+    <li>{{news.news_article.date | formatdatetime }} PST</li>
     <li>{{news.news_article.summary}}</li>
     <li><a href="{{news.news_article.url}}">More info</a></li>
 
