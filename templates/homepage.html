@@ -8,7 +8,6 @@
 
 {%block body %}
 
-
 <h1>LAUNCH COMMAND</h1>
 <h5>Discover upcoming rocket launches and space agency news</h5><br>
 
@@ -19,7 +18,6 @@
 <h5 id='countdownText'>Days Hours Minutes Seconds</h5>
 <h3 id='date'></h3>
 </div><br>
-
 
 
     <div class="form">
@@ -46,15 +44,7 @@
         </form>
 
     </div>
-      
 
-
-
-    <!-- <script type="text/javascript">
-        window.launch = {
-          time: '{{ next_launch_start }}'
-        }
-    </script> -->
         
     <script src="{{url_for('static', filename='app.js')}}"></script>
 {%endblock%}
