@@ -5,6 +5,7 @@
 
 
 {%block body%}
+<div class="container-fluid p-3 my-3 bg-dark text-white">
 
 
 <!-- Button to Open the Modal -->
@@ -13,8 +14,6 @@
     </button>
     <div class="container">
 
-
-      
         <!-- The Modal -->
         <div class="modal fade" id="myModal">
           <div class="modal-dialog modal-sm">
@@ -35,10 +34,10 @@
               <div class="modal-footer">
 
                 <form action="/reminders" method="POST">
-                <button id="reminder" type="submit" class="btn" name = 'reminder' value='notify'>Yes</button>
+                <button id="reminder" type="submit" class="btn btn-dark" name ='reminder' value='notify'>Yes</button>
                 </form> 
 
-                <button type="button" class="btn" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                 
               </div>
               
@@ -51,29 +50,55 @@
 
 
 
-<h1>UPCOMING LAUNCHES</h1>
+<h1 class="text-center mb-5">UPCOMING LAUNCHES</h1>
 
 {% for launch in launches %}
 
     {% if launch.upcomingLaunch_id not in saved_launches %}
+    <!-- <div class="container-md">
+    <div class= "card mb-3">
+        <div class="card-body bg-secondary text-white" id="card-body-color">
+            <img src="{{launch.image}}" class="card-image" alt="rocket on launch pad" width="250"px>
+                <h5 class ="card-title ">{{launch.name}}<br></h5>
+                    <p id="liftoff">{{launch.window_start | formatdatetime}} (PST)<br></p>
+            Status: {{launch.status_name}}
+            Location: {{launch.pad_location}}
+            <a href="{{launch.wiki_url}}">More info</a>
+
+            <form action="/add_launch" method="POST">
+
+                <input id="follow_input" name="launch" type="hidden" value="{{launch.upcomingLaunch_id}}">
+            
+                    <button id=follow type="submit" class="btn btn-primary" value="{{launch.upcomingLaunch_id}}">Follow</button>
+            
+                </form>
+        </div>
         
-<ul>
-    <li><img src="{{launch.image}}" width="250"px></li>
-    <li>{{launch.name}}</li>
-    <li id="liftoff">{{launch.window_start | formatdatetime}} (PST)</li>
-    <li>Status: {{launch.status_name}}</li>
-    <li>Location: {{launch.pad_location}}</li>
-    <li><a href="{{launch.wiki_url}}">More info</a></li>
+    </div>
+</div> -->
 
-    <form action="/add_launch" method="POST">
-
-        <input id="follow_input" name="launch" type="hidden" value="{{launch.upcomingLaunch_id}}">
-    
-            <button id=follow type="submit" class="save" value="{{launch.upcomingLaunch_id}}">Follow</button>
-    
-        </form>
-</ul>
-   
+    <div class="container-md">
+        <div class="card mb-4 bg-secondary border border-light" style="max-width: 1000px;">
+            <div class="row no-gutters">
+            <div class="col-md-5">
+                <img src="{{launch.image}}" class="card-image .justify-content-md-center" alt="rocket on launch pad" height="300"px width="379"px>
+            </div>
+                <div class="card-body bg-secondary text-white  ">
+                <h4 class="card-title">{{launch.name}}</h4>
+                <p class="card-text" id="liftoff">Liftoff: {{launch.window_start | formatdatetime}} (PST)</p>
+                <p class="card-text" id="liftoff">Status: {{launch.status_name}}</p>
+                <p class="card-text " id="liftoff">Location: {{launch.pad_location}}</p>
+                <p><a href="{{launch.wiki_url}}" class="text-warning">More info</a></p>
+                    <form action="/add_launch" method="POST">
+                        <input id="follow_input" name="launch" type="hidden" value="{{launch.upcomingLaunch_id}}">
+                            <button id=follow type="submit" class="btn btn-primary" value="{{launch.upcomingLaunch_id}}">Follow</button>
+                    </form>
+            
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>       
     {%endif%}   
 
 {% endfor %}
@@ -83,9 +108,7 @@
     $('#myModalID').modal('show');
     $('#myModalID').modal('hide');
 </script>
-<!-- <script>$("reminder").click(function(){
-    $.post
-})</script> -->
+</div>
 {%endblock%}
 
 
