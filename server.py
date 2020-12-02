@@ -179,10 +179,11 @@ def delete_a_launch():
 @app.route('/all_news')
 def all_news_results():
     """Return all news articles"""
-
+    user_id = session.get('user_id')
     all_news = crud.get_all_news_articles()
+    saved_news = crud.get_all_saved_articles_by_id(user_id)
 
-    return render_template('all_news.html', all_news=all_news)
+    return render_template('all_news.html', all_news=all_news, saved_news=saved_news)
 
 
 @app.route('/my_news')
