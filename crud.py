@@ -3,6 +3,7 @@
 import datetime
 from model import db, User, Upcominglaunch, Mylaunch, News, My_news, connect_to_db
 from api import upcoming_launch_api
+# from werkzeug.security import check_password_hash
 
 
 #######################################
@@ -164,6 +165,17 @@ def get_all_news_articles():
     """Return all news articles"""
 
     return News.query.all()
+
+
+def get_all_saved_articles_by_id(user_id):
+    """Find all news articles saved by session user"""
+
+    news_ids = []
+    user_saved_news = My_news.query.filter(My_news.user_id == user_id).all()
+
+    for article in user_saved_news:
+        news_ids.append(article.news_id)
+    return news_ids
 
 
 def save_news_article(user_id, news_id):
