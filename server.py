@@ -63,7 +63,7 @@ def register():
     lname = request.form.get('lastName')
     email = request.form.get('email')
     phone = request.form.get('phone')
-    password_1 = request.form.get('password')
+    password = request.form.get('password')
     password_2 = request.form.get('confirm')
 
     # check to see if user email already exists
@@ -73,10 +73,11 @@ def register():
     if user:
         flash('This email already exists. Please sign in.')
         return redirect("/")
-    elif password_1 != password_2:
+    elif password != password_2:
         flash('Passwords do not match.')
+        return redirect("/")
     else:
-        user = crud.create_user(fname, lname, email, phone, password_1)
+        user = crud.create_user(fname, lname, email, phone, password)
         session['user_id'] = user.user_id
         session['email'] = user.email
         flash('Account created! Please sign in.')
@@ -96,7 +97,7 @@ def login():
         flash('Sorry, login failed. Please try again.')
         return redirect("/")
 
-    if user:
+    elif user and user.password == password:
         session['user_id'] = user.user_id
         session['email'] = user.email
         flash(f'Welcome back, {user.fname}!')
