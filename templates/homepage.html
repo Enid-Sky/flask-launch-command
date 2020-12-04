@@ -1,12 +1,13 @@
 {%  extends 'base.html' %}
 
-
-
 {% block title %} Launch Command {%endblock%}
 
 {%block nav%}{%endblock%}
 
 {%block body %}
+
+<!-- container start -->
+<body class="homepage"></body>
 
 <h1>LAUNCH COMMAND</h1>
 <h5>Discover upcoming rocket launches and space agency news</h5><br>
@@ -39,12 +40,19 @@
         
         <button type="submit">Log In</button>
 
-        <p><a href="/register">Register</a></p>
+        <p><a href="/register">Create a new account</a></p>
         
         </form>
 
     </div>
 
-        
+</body>
     <script src="{{url_for('static', filename='app.js')}}"></script>
+{%endblock%}
+
+
+{% block after_body %}
+<footer></footer>
+<!-- end container -->
+
 {%endblock%}
