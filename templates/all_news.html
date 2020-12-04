@@ -5,32 +5,47 @@
 
 {%block body%}
 
+<div id="upcoming-fluid-container" class="container-fluid p-3 my-3 text-white">
+<h1 class="text-center mb-5">LATEST NEWS</h1>
 
-<h1>LATEST NEWS</h1>
 
 <!-- Sometimes images show sometimes they don't -->
 {% for article in all_news %}
 
     {% if article.news_id not in saved_news %}
 
-        <ul>
+        
 
-            <li><img src="{{article.image}}" width="250"px></li>
-            <li>{{article.title}}</li>
-            <li>{{article.news_site}}</li>
-            <li>{{article.date | formatdatetime}} PST</li>
-            <li>{{article.summary}}</li>
-            <li><a href="{{article.url}}">More info</a></li>
+    <div id="upcoming-container" class="container-md">
+        <div id="upcoming-overall-card" class="card mb-3 border border-light offset-md-3" style="max-width: 800px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="{{article.image}}" class="card-img p-3 " alt="news artciles" style="min-height: 250px;" style="min-width: 250px;">
+                    <p><a href="{{article.url}}" class="text-warning offset-md-4" >More info</a></p> 
+                    
+
+                </div>
+                <div class="col-md-8 p-3">
+                <div class="card-body ">
+                  <h5 class="card-title">{{article.title}}</h5>
+                  <p class="card-text" id="liftoff">{{article.news_site}}</p>
+                  <p class="card-text" id="liftoff">{{article.date | formatdatetime}} PST</p>
+                  <p class="card-text " id="liftoff">{{article.summary}}</p>
+                    
+                  <form action="/add_article" method="POST">
+                    <input id="save_article" name="add_article" type="hidden" value="{{article.news_id}}">
+                        <button id=add_news class="btn btn-primary" type="submit" value="{{article.news_id}}">Add</button>
+                </form>  
+                </div>
+              </div>
+            </div>
+        </div>
+    <div>
 
 
-            <form action="/add_article" method="POST">
-                <input id="save_article" name="add_article" type="hidden" value="{{article.news_id}}">
-                    <button id=add_news type="submit" value="{{article.news_id}}">Add</button>
-            </form>
-        </ul>
 
     {%endif%}
 
 {% endfor %}
-
+    div>
 {%endblock%}
