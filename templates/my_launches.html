@@ -6,37 +6,50 @@
 
 
 {%block body%}
+<div id="upcoming-fluid-container" class="container-fluid p-3 my-3 text-white"></div> 
 
 
-<h1>MY LAUNCHES</h1>
+<h1 class="text-center mb-5">MY LAUNCHES</h1>
 
 
 {% for launch in my_launches %}
 
-    <ul>
+    
+    <div id="upcoming-container" class="container-md">
+        <div id="upcoming-overall-card" class="card mb-3 border border-light offset-md-3" style="max-width: 800px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="{{launch.launch.image}}" class="card-img p-3 " alt="Space news images" style="min-height: 250px;" style="min-width: 250px;">
+                    <p><a href="{{launch.launch.wiki_url}}" class="text-warning offset-md-4" >More info</a></p> 
+                    
 
-        <li><img src="{{launch.launch.image}}" width="250"px></li>
-        <li>{{launch.launch.name}}</li>
-        <li>{{launch.launch.window_start | formatdatetime}}</li>
-        <li>Status: {{launch.launch.status_name}}</li>
-        <li>{{launch.launch.pad_location}}</li>
-        <li><a href="{{launch.launch.wiki_url}}">More info</a></li>
-
-
-
-        <form action="/delete_launch" method="POST">
-            <input id="launch_name" name="launch_name" type="hidden" value="{{launch.launch.name}}">
-                <input id="delete_input" name="delete_launch" type="hidden" value="{{launch.my_launch_id}}">
-                    <button id=delete_input type="submit" class="delete" value="{{launch.my_launch_id}}">Delete</button>
-        </form> 
-
-    </ul>
+                </div>
+                <div class="col-md-8 p-3">
+                <div class="card-body ">
+                  <h5 class="card-title">{{launch.launch.name}}</h5>
+                  <p class="card-text" id="liftoff">Liftoff: {{launch.launch.window_start | formatdatetime}}</p>
+                  <p class="card-text" id="liftoff">Status: {{launch.launch.status_name}}</p>
+                  <p class="card-text " id="liftoff">Location:{{launch.launch.pad_location}}</p>
+     
+                <form action="/delete_launch" method="POST">
+                    <input id="launch_name" name="launch_name" type="hidden" value="{{launch.launch.name}}">
+                        <input id="delete_input" name="delete_launch" type="hidden" value="{{launch.my_launch_id}}">
+                            <button id=delete_input type="submit" class="btn btn-primary" value="{{launch.my_launch_id}}">Delete</button>
+                </form> 
+                </div>
+              </div>
+            </div>
+        </div>
+    <div>
 
     {%else%}
         <h4>No results found.</h4>
 
 {% endfor %}
 
+
+
+</div>
 {%endblock%}
 
 
