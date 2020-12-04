@@ -1,20 +1,89 @@
 @import "compass/css3";
 
 
-body{
-background: url(hhttps://images.unsplash.com/photo-1516849841032-87cbac4d88f7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80) no-repeat center center;
+/* <----HOMEPAGE----> */
+
+/* #homepage-container{
+    background-color: blue;
+} */
+
+body.homepage{
+background: url(https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);
+background-repeat: no-repeat;
 background-size: cover;
+position: fixed;
+}
+
+body {
+    background-color: #222831;
+}
+
+
+h1, h2, h3, h4, h5, h6, p {
+    color:#ececec;
+    font-family: ;
+}
+.footer-container {
+    background-color:#303841;
 }
 
 .btn-primary {
-    background-color: rgba(0,190,190,1);
-    border: 1px solid rgba(0,190,190,1)
+    background-color:#00adb5;
+    border: 1px solid #00adb5;
+
 }
 
-.card {
+.btn-primary:hover {
+    background-color: #ff5733;
+    border: 1px solid #ff5733;
+}
 
-    box-shadow: 0 1px 100px 0 rgba(0,0,0,.1);
-  }
+/* <----UPCOMING LAUNCHES----> */
+
+#upcoming-fluid-container {
+    background-color:#222831;
+
+}
+
+#upcoming-overall-card{
+    display: flex;
+    justify-content: center;
+    background-color: #393e46;
+    /* box-shadow: 0 3px 5px 0 rgba(171, 189, 184, 0.2), 0 6px 20px 0 rgba(24, 25, 26, 0.19); */
+}
+
+#upcoming-container {
+    background-color:#222831;
+
+
+}
+
+    /* display: flex;
+    justify-content: center; */
+
+    
+
+/* 
+#upcoming-card {
+    background-color: #3c414e;
+
+    /* 
+    display: flex;
+    justify-content: center; */
+
+
+
+/* } */ 
+
+
+/* #upcoming-card-body {
+    background-color: #3c414e;
+    border: 2px solid #34478b;
+    /* box-shadow: 0 4px 8px 0 rgba(173, 247, 212, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19); */
+    
+/* } */ 
+
+
 
 /* .btn-primary {
 overflow: hidden;
@@ -32,29 +101,69 @@ background: rgba(rgba(0,220,220,1),.3);
 } */
 
 /*---Media Queries --*/
+
+/* @media (min-width: 1200px) { 
+    #upcoming-card-image {
+        max-width: 300px;
+        max-height: 300px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        }
+    
+    #upcoming-card {
+        max-width: 800px;
+    }
+
+ }
+
+
 @media (max-width: 992px) {
+#upcoming-card-image {
+ 
+    max-width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    }
+
+#upcoming-card {
+    max-width: 600px;
+}
 
 }
 @media (max-width: 768px) {
-
+    #upcoming-card {
+        max-width: 500px;
+    }
 }
 @media (max-width: 576px) {
+    #upcoming-card {
+        max-width: 300px;
+    }
+} */
 
-}
 
-/*
-Extra small (xs) devices (portrait phones, less than 576px)
-No media query since this is the default in Bootstrap
+/* Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap */
 
-Small (sm) devices (landscape phones, 576px and up)
-@media (min-width: 576px) { ... }
+/* Small (sm) devices (landscape phones, 576px and up) */
+/* @media (min-width: 576px) { 
 
-Medium (md) devices (tablets, 768px and up)
-@media (min-width: 768px) { ... }
+} */
 
-Large (lg) devices (desktops, 992px and up)
-@media (min-width: 992px) { ... }
+/* Medium (md) devices (tablets, 768px and up) */
+/* @media (min-width: 768px) { ... } */
 
-Extra (xl) large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { ... }
-*/
+/* Large (lg) devices (desktops, 992px and up) */
+/* @media (min-width: 992px) { 
+    #upcoming-overall-card{
+        /* display: flex;
+        justify-content: center; */
+        
+    /* }
+ } */
+
+/* Extra (xl) large devices (large desktops, 1200px and up) */
+/* @media (min-width: 1200px) { ... }
+ */ 
