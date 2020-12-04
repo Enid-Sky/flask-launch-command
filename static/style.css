@@ -10,9 +10,12 @@
 body.homepage{
 background: url(https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);
 background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: center; 
 background-size: cover;
-position: fixed;
 }
+
+
 
 body {
     background-color: #222831;
@@ -25,11 +28,14 @@ h1, h2, h3, h4, h5, h6, p {
 }
 .footer-container {
     background-color:#303841;
+
+
 }
 
 .btn-primary {
-    background-color:#00adb5;
-    border: 1px solid #00adb5;
+    background-color:#00939b;
+    border: 1px solid #00939b;
+
 
 }
 
@@ -41,14 +47,16 @@ h1, h2, h3, h4, h5, h6, p {
 /* <----UPCOMING LAUNCHES----> */
 
 #upcoming-fluid-container {
-    background-color:#222831;
+    /* background-color:#222831; */
+    background-color:##303841;
 
 }
 
 #upcoming-overall-card{
     display: flex;
     justify-content: center;
-    background-color: #393e46;
+    /* background-color: #393e46; */
+    background-color:#313a50
     /* box-shadow: 0 3px 5px 0 rgba(171, 189, 184, 0.2), 0 6px 20px 0 rgba(24, 25, 26, 0.19); */
 }
 
