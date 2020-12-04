@@ -3,37 +3,53 @@
 {% block title %} ABOUT {%endblock%}
 
 {% block body%}
+<div id="upcoming-fluid-container" class="container-fluid p-3 my-3 text-white">
 
-<h1> ABOUT </h1><br>
-    <h2>Welcome to Launch Command!</h2>
-        <p>Here you will find up to date space flight news, and information on future rocket launches from around the world.  Launch command allows you to track all orbital launches and popular sub-orbital launches, from innovative agencies including, SPACEX, NASA, ULA, Arianespace, and ROSCOSMOS, just to name a few. 
-        </p>
-        <p>
-        Keep track of the date and time of upcoming rocket launches, read more about the rockets and missions, and get up-to-date flight status. You also have the option of receiving a text reminder of the time and date of the next exciting launch! Finally, save your favorite launches and news articles for later perusing at your pleasure! 
-        </p>
+<h1 class="text-center mb-5"> ABOUT </h1><br>
+    <div class="mb-5">
+        <h2>Welcome to Launch Command!</h2>
+            <p>Here you will find up to date space flight news, and information on future rocket launches from around the world.  Launch command allows you to track all orbital launches and popular sub-orbital launches, from innovative agencies including, SPACEX, NASA, ULA, Arianespace, and ROSCOSMOS, just to name a few. 
+            </p>
+            <p>
+            Keep track of the date and time of upcoming rocket launches, read more about the rockets and missions, and get up-to-date flight status. You also have the option of receiving a text reminder of the time and date of the next exciting launch! Finally, save your favorite launches and news articles for later perusing at your pleasure! 
+            </p>
+    </div>
 
-    
-        <p>Launch Command currently sources data from an open source library powered by the The Space Devs, a group of engineers and space enthusiasts. The API is a collaborative community tool in constant development and updated daily. Moreover, the news articles are sourced from the open source Spaceflight News API. Twilio Rest API is used to send user's notification on upcoming launches. The tech stack includes: Python, Flask, Jinja, PostgreSQL, SQLAlchemy, JQuery, Bootstrap, Javascript, HTML, and CSS .</p>
+    <div class= "mb-5">
+        <h2>Technologies</h2>
+            <p>Launch Command currently sources data from an open source library powered by the The Space Devs, a group of engineers and space enthusiasts. The API is a collaborative community tool in constant development and updated daily. Moreover, the news articles are sourced from the open source Spaceflight News API. Twilio Rest API is used to send user's notification on upcoming launches. The tech stack includes: Python, Flask, Jinja, PostgreSQL, SQLAlchemy, JQuery, Bootstrap, Javascript, HTML, and CSS .</p>
+    </div>
 
-<div>
-    <h2>About the developer</h2>
-        <p> Enid Svymbersky is the developer behind Launch Command, which is her capstone project while attending Hackbright Academy. Ever since Enid laid eyes on Saturn from behind the lens of a giant telescope, when she was just 7 years old, she has been fascinated by space flight to other planets. Launch Command was born out of Enid's own personal interest in software engineering, tracking rocket launches and reading up on the latest mars rover news (she thinks robots are pretty cool).
-        </p>
-</div>
+    <div id="upcoming-container" class="container-sm">
+        <div id="upcoming-overall-card" class="card mb-3 offset-md-3" style="max-width: 800px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="/static/img/shuttle.png" class="card-img p-3 " alt="news articles" style="min-height: 250px;" style="min-width: 250px;">
+                </div>
+                <div class="col-md-8 p-3">
+                    <div class="card-body ">
+                        <h2>About the developer</h2>
+                            <p> Enid Svymbersky is the developer behind Launch Command, which is her capstone project while attending Hackbright Academy. Ever since Enid laid eyes on Saturn from behind the lens of a giant telescope, when she was just 7 years old, she has been fascinated by space flight to other planets. Launch Command was born out of Enid's own personal interest in software engineering, tracking rocket launches and reading up on the latest mars rover news (she thinks robots are pretty cool).
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
 
-<div>
-    <h2>Contact Info</h2>
-        <label>Email</label>
-            <p>enid.sky@protonmail.com </p>
+<div class="text-center mb-5">
+    <h2 >Contact Info</h2>
+            <p>Email:<em> enid.sky@protonmail.com</em>  </p>
         <label>Find me on:</label><br>
-            <a class="github" href="https://github.com/Enid-Sky">Github</a></li><br>
-            <a class="twitter" href="https://twitter.com/codingsprinkles">Twitter</a></li><br>
-            <a class="twitter" href="https://www.linkedin.com/in/enid-svymbersky/">Linkedin</a></li>
+            <a class="github" href="https://github.com/Enid-Sky">Github | </a></li>
+            <a class="twitter" href="https://twitter.com/codingsprinkles">Twitter | </a></li>
+            <a class="twitter" href="https://www.linkedin.com/in/enid-svymbersky/">Linkedin</a>
 </div>
 
 
 
 
-
+</div>
 
 {% endblock%}
