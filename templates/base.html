@@ -23,7 +23,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="{{url_for('static', filename='app.js')}}"></script>
     <!-- Load style CSS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="static/style.css">
+
     
 
 
@@ -60,13 +63,13 @@
             <a class="nav-link" href="/upcoming">UPCOMING LAUNCHES</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/my_launches">MY LAUNCHES</a>
+            <a class="nav-link" href="/my_launches">LAUNCH LIBRARY</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/all_news">LATEST NEWS</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/my_news">MY NEWS</a>
+            <a class="nav-link" href="/my_news">NEWS LIBRARY</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/logout">LOGOUT</a>
@@ -99,7 +102,7 @@
 
     {% block after_body %}
     <h1>I'm the footer</h1>
-    <div class="container">
+    <div class="footer-container">
         <div class="content"></div>
         <footer class="row">
           <div class="sozial col-xs-12 col-sm-6 col-sm-push-6">
@@ -119,21 +122,17 @@
                   <img class="logo" src="https://cdn2.iconfinder.com/data/icons/black-white-social-media/32/instagram_online_social_media_photo-128.png">
                 </a>
               </li>
-              <li class="col-xs-6 col-sm-2">
-                <a href="#">
-                  <img class="logo" src="https://cdn2.iconfinder.com/data/icons/black-white-social-media/32/online_social_media_google_plus-128.png">
-                </a>
-              </li>
+   
             </ul>
           </div><!-- Ende Sozial media -->
           
           <div class="copyright col-xs-12 col-sm-3 col-sm-pull-6">
-            <p> &copy; Me from now to eternity </p>
+            <p> &copy; Add info here</p>
           </div><!-- Ende Copyright -->
           
           <div class="impressum col-xs-12 col-sm-3 col-sm-pull-6">
-            <p> An impressive impressum </p>
-            <p> Adresse und so </p>
+            <p> Stuff</p>
+            <p> more stuff </p>
           </div><!-- Ende Impressum -->
         </footer>
       </div>
