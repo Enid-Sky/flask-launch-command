@@ -4,13 +4,14 @@
 
 
 {%block body%}
+<div id="upcoming-fluid-container" class="container-fluid p-3 my-3 text-white"></div>
 
-<h1>MY LAUNCHES</h1>
+<h1 class="text-center mb-5">MY LAUNCHES</h1>
 
 <!-- Sometimes images show sometimes they don't -->
 {% for news in my_news %}
 
-<ul>
+<!-- <ul>
 
     <li><img src="{{news.news_article.image}}" width="250"px></li>
     <li>{{news.news_article.title}}</li>
@@ -25,7 +26,35 @@
             <input id="delete_input" name="delete_article" type="hidden" value="{{news.my_news_id}}">
                 <button id=delete_news_article type="submit" class="delete" value="{{news.my_news_id}}">Delete</button>
     </form> 
-</ul>
-{% endfor %}
+</ul> -->
 
+
+<div id="upcoming-container" class="container-md">
+    <div id="upcoming-overall-card" class="card mb-3 border border-light offset-md-3" style="max-width: 800px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="{{news.news_article.image}}" class="card-img p-3 " alt="news artciles" style="min-height: 250px;" style="min-width: 250px;">
+                <p><a href="{{news.news_article.url}}" class="text-warning offset-md-4" >More info</a></p> 
+                
+
+            </div>
+            <div class="col-md-8 p-3">
+            <div class="card-body ">
+              <h5 class="card-title">{{news.news_article.title}}</h5>
+              <p class="card-text" id="liftoff">{{news.news_article.news_site}}</p>
+              <p class="card-text" id="liftoff">{{news.news_article.date | formatdatetime }} PST</p>
+              <p class="card-text " id="liftoff">{{news.news_article.summary}}</p>
+                
+              <form action="/delete_article" method="POST">
+                <input id="article_name" name="article_name" type="hidden" value="{{news.news_article.title}}">
+                    <input id="delete_input" name="delete_article" type="hidden" value="{{news.my_news_id}}">
+                        <button id=delete_news_article type="submit" class="delete btn btn-primary" value="{{news.my_news_id}}">Delete</button>
+            </form> 
+            </div>
+          </div>
+        </div>
+    </div>
+<div>
+{% endfor %}
+</div>
 {%endblock%}
