@@ -56,8 +56,7 @@ function createCountdown() {
         // return data.date;
 }
 
-// FUNCTION CALLS
-createCountdown()
+
 
 $("document").ready(function(){
     setTimeout(function(){
@@ -67,6 +66,32 @@ $("document").ready(function(){
 
 
 
+// // Open Modal
+
+$("#myModalID").modal('toggle');
+$('#myModalID').modal('show');
+$('#myModalID').modal('hide');
+
+
+
+// LOGIN MODAL
+
+$(document).ready(function(){
+    $("#loginBtn").click(function(){
+      $("#login-modal").modal();
+    });
+  });
+
+
+// REGISTRATION MODAL
+$(document).ready(function(){
+$("#btn-sign-up").click(function(){
+    $("#registration-modal").modal();
+});
+});
+
+// FUNCTION CALLS
+createCountdown()
 
 
 
