@@ -11,26 +11,9 @@
 <!-- Sometimes images show sometimes they don't -->
 {% for news in my_news %}
 
-<!-- <ul>
-
-    <li><img src="{{news.news_article.image}}" width="250"px></li>
-    <li>{{news.news_article.title}}</li>
-    <li>{{news.news_article.news_site}}</li>
-    <li>{{news.news_article.date | formatdatetime }} PST</li>
-    <li>{{news.news_article.summary}}</li>
-    <li><a href="{{news.news_article.url}}">More info</a></li>
-
-
-    <form action="/delete_article" method="POST">
-        <input id="article_name" name="article_name" type="hidden" value="{{news.news_article.title}}">
-            <input id="delete_input" name="delete_article" type="hidden" value="{{news.my_news_id}}">
-                <button id=delete_news_article type="submit" class="delete" value="{{news.my_news_id}}">Delete</button>
-    </form> 
-</ul> -->
-
 
 <div id="upcoming-container" class="container-md">
-    <div id="upcoming-overall-card" class="card mb-3 border border-light offset-md-3" style="max-width: 800px;">
+    <div id="upcoming-overall-card" class="card mb-3 border border-light offset-md-4" style="max-width: 800px;">
         <div class="row no-gutters">
             <div class="col-md-4">
                 <img src="{{news.news_article.image}}" class="card-img p-3 " alt="news artciles" style="min-height: 250px;" style="min-width: 250px;">
