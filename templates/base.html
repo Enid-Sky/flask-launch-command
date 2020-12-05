@@ -51,31 +51,33 @@
     {%block nav%}
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/upcoming">Launch Command</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"></button>
-        
-        <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="/about">ABOUT</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/upcoming">UPCOMING LAUNCHES</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/my_launches">LAUNCH LIBRARY</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/all_news">LATEST NEWS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/my_news">NEWS LIBRARY</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/logout">LOGOUT</a>
-        </li>
-        </ul>
-    </div>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/upcoming">Launch Command</a>
+            <img alt="brand" src="/static/img/rocket.png">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"></button>
+            
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/upcoming">UPCOMING LAUNCHES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/my_launches">LAUNCH LIBRARY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/all_news">LATEST NEWS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/my_news">NEWS LIBRARY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">LOGOUT</a>
+                </li>
+ 
+            </ul>
+        </div>
     </nav>
       
   <!-- End of Navigation Bar -->
@@ -101,10 +103,12 @@
 
 
     {% block after_body %}
-    <h1>I'm the footer</h1>
+<!-- 
     <div class="footer-container">
         <div class="content"></div>
         <footer class="row">
+            <p> &copy;LAUNCH COMMAND</p>
+            <p>Made with <span>❤</span> by <a href="https://www.instagram.com/rzkytmgr/">@rzkytmgr</a>.</p>
           <div class="sozial col-xs-12 col-sm-6 col-sm-push-6">
             <ul class="row">
               <li class="col-xs-6 col-sm-2">
@@ -124,17 +128,20 @@
               </li>
    
             </ul>
-          </div><!-- Ende Sozial media -->
+          </div>Ende Sozial media
           
           <div class="copyright col-xs-12 col-sm-3 col-sm-pull-6">
-            <p> &copy; Add info here</p>
-          </div><!-- Ende Copyright -->
-          
-          <div class="impressum col-xs-12 col-sm-3 col-sm-pull-6">
-            <p> Stuff</p>
-            <p> more stuff </p>
-          </div><!-- Ende Impressum -->
+            <p> &copy;LAUNCH COMMAND</p>
+            <p>Made with <span>❤</span> by <a href="https://www.instagram.com/rzkytmgr/">@rzkytmgr</a>.</p>
+          </div>Ende Copyright
+
         </footer>
+      </div> -->
+
+      <div class="container" id="footer">
+        <div>
+          <p>Made with <span>❤</span> by <a href="https://www.linkedin.com/in/enid-svymbersky/">@Enid</a>.</p>
+        </div>
       </div>
     {% endblock %}
 
@@ -142,7 +149,6 @@
 
 
 <script>
-
 
 
 </script>
