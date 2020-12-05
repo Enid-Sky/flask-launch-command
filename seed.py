@@ -21,11 +21,6 @@ connect_to_db(server.app)
 db.create_all()
 
 
-# TODO: refractor code
-# upcomingLaunchList = launch_data.map(
-#     launch => crud.createUpcomingLaunch(launch.name, launch.status.name....)
-# )
-
 # SEED UPCOMING LAUNCH DATABASE
 # def upcoming_launch_api():
 res = requests.get(
