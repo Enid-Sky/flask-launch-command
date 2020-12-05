@@ -49,13 +49,14 @@ def about():
     return render_template('about.html')
 
 
-@app.route('/register')
-def create_user():
+# @app.route('/register')
+# def create_user():
 
-    return render_template('signup.html')
+#     # return render_template('signup.html')
+#     return redirect("/")
 
 
-@app.route('/', methods=['POST'])
+@app.route('/register', methods=['POST'])
 def register():
     """ Register user and save to database"""
 
@@ -80,8 +81,8 @@ def register():
         user = crud.create_user(fname, lname, email, phone, password)
         session['user_id'] = user.user_id
         session['email'] = user.email
-        flash('Account created! Please sign in.')
-        return redirect('/')
+        flash('Account created!')
+        return redirect('/upcoming')
 
 
 @app.route('/login', methods=['POST'])
