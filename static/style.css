@@ -7,14 +7,21 @@
     background-color: blue;
 } */
 
+
+
+
 body.homepage{
 background: url(https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);
+/* background: url(http://innerspaceintegration.com/wp-content/uploads/2016/06/earth-from-space-hd-wallpaper-1-thin.jpg); */
 background-repeat: no-repeat;
 background-attachment: fixed;
 background-position: center; 
 background-size: cover;
 }
 
+body.about {
+    background: url(http://innerspaceintegration.com/wp-content/uploads/2016/06/earth-from-space-hd-wallpaper-1-thin.jpg);
+}
 
 
 body {
@@ -24,47 +31,144 @@ body {
 
 h1, h2, h3, h4, h5, h6, p {
     color:#ececec;
-    font-family: ;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .footer-container {
-    background-color:#303841;
-
-
+    background-color:#222831;
 }
 
 .btn-primary {
     background-color:#00939b;
     border: 1px solid #00939b;
-
-
+    border-radius: 10px;
+    border: 1px solid #ffffff;
 }
 
 .btn-primary:hover {
-    background-color: #ff5733;
-    border: 1px solid #ff5733;
+    background-color: #035f7a;
+    border: 1px solid #ffffff;
 }
+
+
+/* LOGIN MODAL */
+
+#home-modal-container {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+}
+
+
+.modal-header, h4, .close {
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
+  }
+
+.modal-footer {
+    background-color: #f9f9f9;
+  }
+
+/* REGISTRATION MODAL */
+
+.modal-header, h4, .close {
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
+  }
+
+.modal-footer {
+    background-color: #f9f9f9;
+  }
+
+
+#btn-sign-up {
+    margin-left: 50px;
+}
+
 
 /* <----UPCOMING LAUNCHES----> */
 
+#notify-button {
+    max-width: 300px;
+}
+
 #upcoming-fluid-container {
     /* background-color:#222831; */
-    background-color:##303841;
-
+    background-color:#222831;
+    
 }
 
 #upcoming-overall-card{
     display: flex;
     justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 5px 0 rgba(60, 70, 70, 0.2), 10px 6px 20px 0 rgba(24, 25, 26, 0.19);
+
+
     /* background-color: #393e46; */
-    background-color:#313a50
-    /* box-shadow: 0 3px 5px 0 rgba(171, 189, 184, 0.2), 0 6px 20px 0 rgba(24, 25, 26, 0.19); */
+    /* background-color:#313a50 */
+
 }
 
 #upcoming-container {
     background-color:#222831;
 
 
+
 }
+
+
+/* MODAL */
+
+
+.modal-header {
+    background-color:#4175c4;
+}
+
+.yes-button{
+    background-color: #00939b;
+}
+
+.modal-body {
+    background-color: #fbf6f0;
+}
+.modal-footer {
+    background-color: #4875b9;
+}
+
+
+.btn-secondary {
+    background-color: #ff5733;
+}
+
+
+#footer {
+    height: 100px;
+    min-width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    background-color: #343a40;
+    margin-top: 50px;
+
+}
+
+.container div > p span {
+    color: red;
+
+
+
+
+
+
+
+
+
+
 
     /* display: flex;
     justify-content: center; */
