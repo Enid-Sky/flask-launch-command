@@ -21,30 +21,120 @@
 </div><br>
 
 
-    <div class="form">
-    
-        <h2>Log in</h2>
-        
-        <form action="/login" method="POST">
-        
-          <label>
-            Email Address
-            <input type="text" name="email"/>
-          </label>
+<!-- --------- LOGIN MODAL ------------->
 
-          <label>
-            Password
-          </label>
-          <input type="password" name="password"/>
+<div class="container" id="home-modal-container">
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-default btn-lg" id="loginBtn">Login</button>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="login-modal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="login-modal-title">Login</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
 
+          </div>
+          <div class="modal-body" style="padding:40px 50px;">
+
+            <form action="/login" method="POST"role="form">
+              <div class="form-group">
+                <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+                <input type="text" name="email" class="form-control" id="usrname" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                <input type="text" name="password" class="form-control" id="psw" placeholder="Enter password">
+              </div>
+
+                <button type="submit" class="btn btn-success btn-block">Login</button>
+
+                <p class="text-center"><a href="/register">Create a new account</a></p>
+            </form>
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            
+
+          </div>
+        </div>
         
-        <button type="submit">Log In</button>
+      </div>
+    </div> 
+<!-- --------- END LOGIN MODAL ------------->
 
-        <p><a href="/register">Create a new account</a></p>
+<!-- --------- START REG MODAL------------->
+
+    <button type="button" class="btn btn-default btn-lg" id="btn-sign-up">Sign Up</button>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="registration-modal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="registration-modal-title">Register</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+          </div>
+          <div class="modal-body" style="padding:40px 50px;">
+
+            <form action="/register" method="POST"role="form">
+                <div class="form-group">
+                    <label for="usrname">First name</label>
+                    <input type="text"  name = "firstName" class="form-control" id="firstName" placeholder="Enter your first name">
+                </div>
+                <div class="form-group">
+                    <label for="usrname">Last name</label>
+                    <input type="text" name = "lastName" class="form-control" id="lastName" placeholder="Enter your last name">
+                </div>
+              <div class="form-group">
+                <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+                <input type="text" name="email" class="form-control" id="email" placeholder="Enter your email">
+              </div>
+              
+              <div class="form-group">
+                <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Mobile number</label>
+                <input type="text" name="phone" class="form-control" id="psw" placeholder="+13105551111">
+              </div>
+
+              <div class="form-group">
+                <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                <input type="text" name="password" class="form-control" id="psw" placeholder="Enter a password">
+              </div>
+
+              <div class="form-group">
+                <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Confirm password</label>
+                <input type="text" name="confirm" class="form-control" id="psw" placeholder="Re-enter password">
+              </div>
+
+                <button type="submit" class="btn btn-success btn-block">Submit</button>
+
+                <p class="text-center"><a href="/register">Already registered? Log in here.</a></p>
+            </form>
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+
+          </div>
+        </div>
         
-        </form>
+      </div>
+    </div> 
+  </div>
 
-    </div>
+
+
+
+  <!-- --------- END REGISTRATION MODAL------------->
 
 </body>
     <script src="{{url_for('static', filename='app.js')}}"></script>
