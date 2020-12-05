@@ -1,4 +1,4 @@
-@import "compass/css3";
+/* @import "compass/css3"; */
 
 
 /* <----HOMEPAGE----> */
@@ -11,21 +11,26 @@
 
 
 body.homepage{
-background: url(https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);
-/* background: url(http://innerspaceintegration.com/wp-content/uploads/2016/06/earth-from-space-hd-wallpaper-1-thin.jpg); */
+
+background-image: url(img/homepage.jpg);
 background-repeat: no-repeat;
 background-attachment: fixed;
 background-position: center; 
 background-size: cover;
 }
 
-body.about {
+/* body.about {
     background: url(http://innerspaceintegration.com/wp-content/uploads/2016/06/earth-from-space-hd-wallpaper-1-thin.jpg);
-}
+} */
 
 
 body {
-    background-color: #222831;
+    background-image:url(img/pages.jpg);
+    /* background-color: #222831; */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+    background-size: cover;
 }
 
 
@@ -88,6 +93,14 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 
+/* <-------NAV BAR--------> */
+
+#nav {
+    background-color: #000000;
+}
+
+
+
 /* <----UPCOMING LAUNCHES----> */
 
 #notify-button {
@@ -96,7 +109,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 #upcoming-fluid-container {
     /* background-color:#222831; */
-    background-color:#222831;
+    /* background-color:#222831; */
     
 }
 
@@ -104,8 +117,8 @@ h1, h2, h3, h4, h5, h6, p {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.2);
-    box-shadow: 0 3px 5px 0 rgba(60, 70, 70, 0.2), 10px 6px 20px 0 rgba(24, 25, 26, 0.19);
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2), 10px 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 
     /* background-color: #393e46; */
@@ -114,7 +127,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 #upcoming-container {
-    background-color:#222831;
+    /* background-color:#222831; */
 
 
 
@@ -144,6 +157,8 @@ h1, h2, h3, h4, h5, h6, p {
     background-color: #ff5733;
 }
 
+/* FOOTER */
+
 
 #footer {
     height: 100px;
@@ -152,7 +167,7 @@ h1, h2, h3, h4, h5, h6, p {
     align-items: center;
     display: flex;
     text-align: center;
-    background-color: #343a40;
+    background-color: #000000;
     margin-top: 50px;
 
 }
@@ -160,7 +175,7 @@ h1, h2, h3, h4, h5, h6, p {
 .container div > p span {
     color: red;
 
-
+}
 
 
 
