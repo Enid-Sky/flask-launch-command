@@ -1,13 +1,6 @@
-/* @import "compass/css3"; */
 
 
 /* <----HOMEPAGE----> */
-
-/* #homepage-container{
-    background-color: blue;
-} */
-
-
 
 
 body.homepage{
@@ -19,10 +12,6 @@ background-position: center;
 background-size: cover;
 }
 
-/* body.about {
-    background: url(http://innerspaceintegration.com/wp-content/uploads/2016/06/earth-from-space-hd-wallpaper-1-thin.jpg);
-} */
-
 
 body {
     background-image:url(img/pages.jpg);
@@ -31,12 +20,18 @@ body {
     background-attachment: fixed;
     background-position: center; 
     background-size: cover;
+
 }
 
 
 h1, h2, h3, h4, h5, h6, p {
     color:#ececec;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.brand-name {
+    font-family: JetBrains Mono, Roboto, sans-serif;
+    font-size: 50px;
 }
 .footer-container {
     background-color:#222831;
@@ -55,7 +50,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 
-/* LOGIN MODAL */
+/*<----- LOGIN MODAL-----> */
 
 #home-modal-container {
     justify-content: center;
@@ -75,7 +70,7 @@ h1, h2, h3, h4, h5, h6, p {
     background-color: #f9f9f9;
   }
 
-/* REGISTRATION MODAL */
+/* <----- REGISTRATION MODAL-----> */
 
 .modal-header, h4, .close {
     color:white !important;
@@ -90,14 +85,90 @@ h1, h2, h3, h4, h5, h6, p {
 
 #btn-sign-up {
     margin-left: 50px;
+    background-color: #00939b;
+    color: white;
 }
+
+#btn-sign-up:hover {
+    color: #f9f9f9;
+    border-color: #f9f9f9;
+    background-image: radial-gradient( circle 1086px at 1.1% 96.2%,  rgba(1,44,66,1) 0%, rgba(163,221,253,1) 53.6% );
+    }
+
+
+#btn-signin {
+border-color: #00939b;
+font-weight: 400;
+color: #00939b;
+}
+
+#btn-signin:hover {
+    color: #f9f9f9;
+    font-weight: 400;
+    border-color: #f9f9f9;
+    background-image: radial-gradient( circle 1086px at 1.1% 96.2%,  rgba(1,44,66,1) 0%, rgba(163,221,253,1) 53.6% );
+    }
+    
 
 
 /* <-------NAV BAR--------> */
 
 #nav {
     background-color: #000000;
+    border-bottom: 1px solid white;
 }
+
+.navbar-brand {
+    font-family: JetBrains Mono, Roboto, sans-serif;
+
+}
+
+
+/* FLASH MESSAGES */
+
+#flash {
+    background-image: linear-gradient( 109.6deg,  rgba(41,125,182,1) 3.6%, rgba(77,58,151,1) 51%, rgba(103,55,115,1) 92.9% );
+    color: white;
+}
+
+
+/* <--------HOME------->*/
+
+
+#countdown {
+    font-size: 50px;
+    word-spacing: 10px;
+    color: #fd8c04;
+}
+
+.countdown-text {
+    word-spacing: 35px;
+}
+
+#main-home-container {
+    margin-top: 350px;
+}
+
+
+#home-title-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2), 10px 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 200px;
+
+}
+
+#home-countdown-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 10px 3px 15px 5px rgba(0, 0, 0, 0.3), 10px 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
 
 
 
@@ -105,13 +176,11 @@ h1, h2, h3, h4, h5, h6, p {
 
 #notify-button {
     max-width: 300px;
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(90,92,106,1) 0%, rgba(32,45,58,1) 81.3% );
+    color:white;
 }
 
-#upcoming-fluid-container {
-    /* background-color:#222831; */
-    /* background-color:#222831; */
-    
-}
+
 
 #upcoming-overall-card{
     display: flex;
@@ -120,17 +189,6 @@ h1, h2, h3, h4, h5, h6, p {
     background-color: rgba(0, 0, 0, 0.8);
     box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2), 10px 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-
-    /* background-color: #393e46; */
-    /* background-color:#313a50 */
-
-}
-
-#upcoming-container {
-    /* background-color:#222831; */
-
-
-
 }
 
 
@@ -138,7 +196,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 
 .modal-header {
-    background-color:#4175c4;
+    background-image: radial-gradient( circle 1086px at 1.1% 96.2%,  rgba(1,44,66,1) 0%, rgba(163,221,253,1) 53.6% );
 }
 
 .yes-button{
@@ -149,148 +207,54 @@ h1, h2, h3, h4, h5, h6, p {
     background-color: #fbf6f0;
 }
 .modal-footer {
-    background-color: #4875b9;
+    background-image: radial-gradient( circle 1086px at 1.1% 96.2%,  rgba(1,44,66,1) 0%, rgba(163,221,253,1) 53.6% );
 }
 
+#home-modal-login {
+    background-color: #00939b;
+    color: #f9f9f9;
+}
+
+#home-modal-register {
+    background-color: #00939b;
+    color: #f9f9f9;
+}
 
 .btn-secondary {
     background-color: #ff5733;
 }
 
+
+
+
+
+/* --------------------------------ISSUE */
+#wrapper {
+    /* height: 100%;
+    padding-bottom: 100px; */
+}
+
 /* FOOTER */
 
-
-#footer {
-    height: 100px;
-    min-width: 100%;
+/* --------------------------------ISSUE */
+footer {
+    height:100px;
+    /* min-width: 100%;
     justify-content: center;
     align-items: center;
     display: flex;
-    text-align: center;
+    text-align: center; */
     background-color: #000000;
-    margin-top: 50px;
+    /* position:absolute;
+    bottom:0; */
 
-}
+} 
+
 
 .container div > p span {
-    color: red;
+    color: #00939b;
 
 }
 
 
 
-
-
-
-
-
-
-    /* display: flex;
-    justify-content: center; */
-
-    
-
-/* 
-#upcoming-card {
-    background-color: #3c414e;
-
-    /* 
-    display: flex;
-    justify-content: center; */
-
-
-
-/* } */ 
-
-
-/* #upcoming-card-body {
-    background-color: #3c414e;
-    border: 2px solid #34478b;
-    /* box-shadow: 0 4px 8px 0 rgba(173, 247, 212, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19); */
-    
-/* } */ 
-
-
-
-/* .btn-primary {
-overflow: hidden;
-position: relative;
-width: 200px;
-height: 50px;
-border: 1px solid rgba(0,190,190,1);
-background: rgba(rgba(0,190,190,1),.2);
-}
-
-/* .btn-primary:hover {
-/* @include borderGlow(); */
-/* color: rgba(0,220,220,1);
-background: rgba(rgba(0,220,220,1),.3);
-} */
-
-/*---Media Queries --*/
-
-/* @media (min-width: 1200px) { 
-    #upcoming-card-image {
-        max-width: 300px;
-        max-height: 300px;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        }
-    
-    #upcoming-card {
-        max-width: 800px;
-    }
-
- }
-
-
-@media (max-width: 992px) {
-#upcoming-card-image {
- 
-    max-width: 300px;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    }
-
-#upcoming-card {
-    max-width: 600px;
-}
-
-}
-@media (max-width: 768px) {
-    #upcoming-card {
-        max-width: 500px;
-    }
-}
-@media (max-width: 576px) {
-    #upcoming-card {
-        max-width: 300px;
-    }
-} */
-
-
-/* Extra small (xs) devices (portrait phones, less than 576px)
-No media query since this is the default in Bootstrap */
-
-/* Small (sm) devices (landscape phones, 576px and up) */
-/* @media (min-width: 576px) { 
-
-} */
-
-/* Medium (md) devices (tablets, 768px and up) */
-/* @media (min-width: 768px) { ... } */
-
-/* Large (lg) devices (desktops, 992px and up) */
-/* @media (min-width: 992px) { 
-    #upcoming-overall-card{
-        /* display: flex;
-        justify-content: center; */
-        
-    /* }
- } */
-
-/* Extra (xl) large devices (large desktops, 1200px and up) */
-/* @media (min-width: 1200px) { ... }
- */ 
