@@ -24,7 +24,9 @@
     <script src="{{url_for('static', filename='app.js')}}"></script>
     <!-- Load style CSS -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital@1&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="static/style.css">
 
     
@@ -33,27 +35,16 @@
 
     {% endblock %}
   </head>
- 
-  {% with messages = get_flashed_messages() %}
-  {% if messages %}
-      {% for message in messages %}
 
-          <div class="alert alert-info alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert">
-              </button> 
-          {{message}}
-          </div>
-  
-      {%endfor%}
-  {% endif %}
-{% endwith %}
 
     {%block nav%}
     <!-- Navigation Bar -->
     <nav id="nav" class="navbar navbar-expand-md navbar-dark sticky-top">
+        <img id="brand-image" alt="brand" src="/static/img/rocket.png">
         <div class="container-fluid">
+           
             <a class="navbar-brand" href="/upcoming">Launch Command</a>
-            <img alt="brand" src="/static/img/rocket.png">
+           
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"></button>
             
             <ul class="navbar-nav">
@@ -82,18 +73,29 @@
       
   <!-- End of Navigation Bar -->
 
-        <!-- <div>
-
-        </div> -->
-
         
-        
-
+  <!-- Start Flash messages -->
     {%endblock%}
 
+     
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+      {% for message in messages %}
+
+          <div id="flash" class="alert alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert">
+              </button> 
+          {{message}}
+          </div>
+  
+      {%endfor%}
+  {% endif %}
+{% endwith %}
+
+    <!-- EndFlash messages -->
 
   <body>
-
+    <div id="wrapper">
 
 
     {% block body %}
@@ -103,7 +105,7 @@
 
 
     {% block after_body %}
-
+<!-- 
       <div class="container" id="footer">
         <div>
           <p>Made with <span>❤</span> by Enid</p>
@@ -111,20 +113,20 @@
           <a class="twitter" href="https://twitter.com/codingsprinkles">Twitter | </a></li>
           <a class="twitter" href="https://www.linkedin.com/in/enid-svymbersky/">Linkedin</a>
         </div>
-      </div>
+      </div> -->
+
+
+      <footer class="page-footer font-small black">
+
+        <div class="footer-copyright text-center py-3 sticky-bottom">© 2020 Copyright:
+          <a href="https://mdbootstrap.com/"><p>Made with <span>❤</span> by Enid</p></a>
+        </div>
+      
+    
+      </footer> -->
     {% endblock %}
 
-
-
-
-<script>
-
-
-</script>
-
-
-
-
+</div>
   </body>
 </html>
 
