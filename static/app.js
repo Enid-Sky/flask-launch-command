@@ -77,7 +77,7 @@ $('#myModalID').modal('hide');
 // LOGIN MODAL
 
 $(document).ready(function(){
-    $("#loginBtn").click(function(){
+    $("#btn-signin").click(function(){
       $("#login-modal").modal();
     });
   });
