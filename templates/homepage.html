@@ -9,23 +9,61 @@
 <!-- container start -->
 <body class="homepage"></body>
 
-<h1>LAUNCH COMMAND</h1>
-<h5>Discover upcoming rocket launches and space agency news</h5><br>
 
-<div>
-<h2>NEXT LAUNCH:</h2>
-<h3 id='rocketName'></h3>
-<H1 id="countdown"></H1>
-<h5 id='countdownText'>Days Hours Minutes Seconds</h5>
-<h3 id='date'></h3>
-</div><br>
+<!-- LAUNCH COMMAND HEADER -->
+
+
+<div id=main-home-container>
+    <div id="upcoming-container" class="container-sm text-center">
+        <div id="home-title-card" class="card w-80 mt-5 mb-5 mx-auto border border-light" style="max-width: 900px;">
+            <div class="row no-gutters">
+
+            </div>
+                <div class="col-md-9">
+                    <div class="card-body mt-5">
+                        <div>
+                            <h1 class="brand-name">LAUNCH COMMAND</h1><br>
+                            <h5>Discover upcoming rocket launches and space agency news</h5><br>
+                        </div><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- NEXT LAUNCH AND COUNTDOWN -->
+
+    <div id="upcoming-container" class="container-sm text-center">
+        <div id="home-countdown-card" class="card w-60 mb-5 mx-auto" style="max-width: 700px;">
+            <div class="row no-gutters">
+
+            </div>
+                <div class="col-md-8 p-3">
+                    <div class="card-body ">
+                        <div>
+                            <h2>NEXT LAUNCH:</h2>
+                            <h5 id='rocketName'></h5>
+                            <h1 id="countdown"></h1>
+                            <h6 class='countdownText ml-3'><span class="countdown-text">Days Hours Minutes Seconds</span></h6>
+                        </div><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 
 <!-- --------- LOGIN MODAL ------------->
 
 <div class="container" id="home-modal-container">
     <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-default btn-lg" id="loginBtn">Login</button>
+    <button type="button" class="btn btn-default btn-lg" id="btn-signin">Sign in</button>
   
     <!-- Modal -->
     <div class="modal fade" id="login-modal" role="dialog">
@@ -42,23 +80,22 @@
 
             <form action="/login" method="POST"role="form">
               <div class="form-group">
-                <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+                <label for="usrname"></span> Username</label>
                 <input type="text" name="email" class="form-control" id="usrname" placeholder="Enter email">
               </div>
               <div class="form-group">
-                <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                <label for="psw"></span> Password</label>
                 <input type="text" name="password" class="form-control" id="psw" placeholder="Enter password">
               </div>
 
-                <button type="submit" class="btn btn-success btn-block">Login</button>
+                <button type="submit" id="home-modal-login"class="btn  btn-block">Login</button>
 
-                <p class="text-center"><a href="/register">Create a new account</a></p>
             </form>
 
 
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"></span> Cancel</button>
             
 
           </div>
@@ -95,34 +132,33 @@
                     <input type="text" name = "lastName" class="form-control" id="lastName" placeholder="Enter your last name">
                 </div>
               <div class="form-group">
-                <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+                <label for="usrname"></span> Username</label>
                 <input type="text" name="email" class="form-control" id="email" placeholder="Enter your email">
               </div>
               
               <div class="form-group">
-                <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Mobile number</label>
+                <label for="psw"></span> Mobile number</label>
                 <input type="text" name="phone" class="form-control" id="psw" placeholder="+13105551111">
               </div>
 
               <div class="form-group">
-                <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                <label for="psw"></span> Password</label>
                 <input type="text" name="password" class="form-control" id="psw" placeholder="Enter a password">
               </div>
 
               <div class="form-group">
-                <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Confirm password</label>
+                <label for="psw"></span> Confirm password</label>
                 <input type="text" name="confirm" class="form-control" id="psw" placeholder="Re-enter password">
               </div>
 
-                <button type="submit" class="btn btn-success btn-block">Submit</button>
+                <button type="submit" id="home-modal-register" class="btn btn-block">Submit</button>
 
-                <p class="text-center"><a href="/register">Already registered? Log in here.</a></p>
             </form>
 
 
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"></span> Cancel</button>
 
           </div>
         </div>
