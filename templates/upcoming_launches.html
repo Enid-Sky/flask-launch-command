@@ -15,16 +15,59 @@ NOTE WORK ON THIS -->
     </div>
 </div> -->
 
-    <div id="upcoming-fluid-container" class="container-fluid p-3 my-3 text-white"></div>
+<!----------- PAGE HEADER ------------>
+    <div id="upcoming-fluid-container" class="container-fluid p-3 my-3 text-white">
 
     <h1 class="text-center mb-5">UPCOMING LAUNCHES</h1>
     
 
+<!----------- END PAGE HEADER ------------>
 
-        <!-- -fluid p-3 my-3 -->
+<!-----------------MODAL ----------------->
+
+<!-- Button to Open the Modal -->
+<button id="notify-button" type="button" class="btn btn-block mt-5 mb-1 mx-auto" data-toggle="modal" data-target="#myModal">
+    Notify Me!
+    </button>
+    <div class="container">
+
+        <!-- The Modal -->
+        <div class="modal fade text-dark" id="myModal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+            
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Launch Notification</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div id="notify-text" class="modal-body">
+                Get a text reminder for the next launch?
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+
+                <form action="/reminders" method="POST">
+                <button id="reminder" type="submit" class="btn btn-primary" name ='reminder' value='notify'>Yes</button>
+                </form> 
+
+                <button id="btn-cancel" type="button" class="btn" data-dismiss="modal">No</button>
+                
+            </div>
+        
+            </div>
+        </div>
+        </div>
+        
+    </div>
+
+</div>
 
 
-    <!----------- CARDS-------------->
+<!----------- START CARDS-------------->
 
 
     {% for launch in launches %}
@@ -32,20 +75,20 @@ NOTE WORK ON THIS -->
         {% if launch.upcomingLaunch_id not in saved_launches %}
     
         <div id="upcoming-container" class="container-md">
-            <div id="upcoming-overall-card" class="card mb-3 border border-light offset-md-4" style="max-width: 800px;">
+            <div id="upcoming-overall-card" class="card w-80 mt-5 mb-5 mx-auto border border-light" style="max-width: 800px;">
                 <div class="row no-gutters">
                     <div class="col-md-4">
                         <img src="{{launch.image}}" class="card-img p-3 " alt="Rocket on launch pad" style="min-height: 250px;" style="min-width: 250px;">
-                        <p><a href="{{launch.wiki_url}}" class="text-warning offset-md-4" >More info</a></p> 
+                        <p><a href="{{launch.wiki_url}}" class="info-text offset-md-4" >More info</a></p> 
                         
 
                     </div>
                     <div class="col-md-8 p-3">
                     <div class="card-body ">
                     <h5 class="card-title">{{launch.name}}</h5>
-                    <p class="card-text" id="liftoff">Liftoff: {{launch.window_start | formatdatetime}} (PST)</p>
-                    <p class="card-text" id="liftoff">Status: {{launch.status_name}}</p>
-                    <p class="card-text " id="liftoff">Location: {{launch.pad_location}}</p>
+                    <p class="card-text" id="liftoff"><span class="title-color">Liftoff: </span>{{launch.window_start | formatdatetime}} (PST)</p>
+                    <p class="card-text" id="liftoff"><span class="title-color">Status:</span> {{launch.status_name}}</p>
+                    <p class="card-text " id="liftoff"><span class="title-color">Location:</span> {{launch.pad_location}}</p>
                         
                     <form action="/add_launch" method="POST">
                         <input id="follow_input" name="launch" type="hidden" value="{{launch.upcomingLaunch_id}}">
@@ -62,50 +105,8 @@ NOTE WORK ON THIS -->
 
     {% endfor %}
 
-    <!----------- MODAL -------------->
 
-
-    <!-- Button to Open the Modal -->
-    <button id="notify-button" type="button" class="btn btn-block offset-md-4" data-toggle="modal" data-target="#myModal">
-        Notify Me!
-        </button>
-        <div class="container">
-
-            <!-- The Modal -->
-            <div class="modal fade text-dark" id="myModal">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Launch Notification</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Would you like to receive a text reminder regarding the next launch?
-                </div>
-                
-                <!-- Modal footer -->
-                <div class="modal-footer">
-
-                    <form action="/reminders" method="POST">
-                    <button id="reminder" type="submit" class="btn btn-primary" name ='reminder' value='notify'>Yes</button>
-                    </form> 
-
-                    <button type="button" class="btn btn-secondary bg-secondary" data-dismiss="modal">No</button>
-                    
-                </div>
-            
-                </div>
-            </div>
-            </div>
-            
-        </div>
-
-    </div>
-  
+</div>
 {%endblock%}
 
 
