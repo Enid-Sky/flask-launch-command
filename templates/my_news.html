@@ -6,26 +6,26 @@
 {%block body%}
 <div id="upcoming-fluid-container" class="container-fluid p-3 my-3 text-white"></div>
 
-<h1 class="text-center mb-5">MY LAUNCHES</h1>
+<h1 class="text-center mb-5">NEWS LIBRARY</h1>
 
 <!-- Sometimes images show sometimes they don't -->
 {% for news in my_news %}
 
 
 <div id="upcoming-container" class="container-md">
-    <div id="upcoming-overall-card" class="card mb-3 border border-light offset-md-4" style="max-width: 800px;">
+    <div id="upcoming-overall-card" class="card w-80 mt-5 mb-5 mx-auto border border-light" style="max-width: 800px;">
         <div class="row no-gutters">
             <div class="col-md-4">
                 <img src="{{news.news_article.image}}" class="card-img p-3 " alt="news artciles" style="min-height: 250px;" style="min-width: 250px;">
-                <p><a href="{{news.news_article.url}}" class="text-warning offset-md-4" >More info</a></p> 
+                <p><a href="{{news.news_article.url}}" class="info-text offset-md-4" >More info</a></p> 
                 
 
             </div>
             <div class="col-md-8 p-3">
             <div class="card-body ">
               <h5 class="card-title">{{news.news_article.title}}</h5>
-              <p class="card-text" id="liftoff">{{news.news_article.news_site}}</p>
-              <p class="card-text" id="liftoff">{{news.news_article.date | formatdatetime }} PST</p>
+              <p class="card-text" id="liftoff"><span class="title-color">News Agency: </span>{{news.news_article.news_site}}</p>
+              <p class="card-text" id="liftoff"><span class="title-color">Date: </span>{{news.news_article.date | formatdatetime }} PST</p>
               <p class="card-text " id="liftoff">{{news.news_article.summary}}</p>
                 
               <form action="/delete_article" method="POST">
@@ -38,6 +38,10 @@
         </div>
     </div>
 <div>
+
+    {%else%}
+    <h4>No results found.</h4>
+
 {% endfor %}
 </div>
 {%endblock%}
