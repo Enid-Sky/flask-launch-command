@@ -9,27 +9,27 @@
 <div id="upcoming-fluid-container" class="container-fluid p-3 my-3 text-white"></div> 
 
 
-<h1 class="text-center mb-5">MY LAUNCHES</h1>
+<h1 class="text-center mb-5">LAUNCH LIBRARY</h1>
 
 
 {% for launch in my_launches %}
 
 
     <div id="upcoming-container" class="container-md">
-        <div id="upcoming-overall-card" class="card mb-3 border border-light offset-md-4" style="max-width: 800px;">
+        <div id="upcoming-overall-card" class="card w-80 mt-5 mb-5 mx-auto border border-light" style="max-width: 800px;">
             <div class="row no-gutters">
                 <div class="col-md-4">
                     <img src="{{launch.launch.image}}" class="card-img p-3 " alt="Space news images" style="min-height: 250px;" style="min-width: 250px;">
-                    <p><a href="{{launch.launch.wiki_url}}" class="text-warning offset-md-4" >More info</a></p> 
+                    <p><a href="{{launch.launch.wiki_url}}" class="info-text offset-md-4" >More info</a></p> 
                     
 
                 </div>
                 <div class="col-md-8 p-3">
                 <div class="card-body ">
                   <h5 class="card-title">{{launch.launch.name}}</h5>
-                  <p class="card-text" id="liftoff">Liftoff: {{launch.launch.window_start | formatdatetime}}</p>
-                  <p class="card-text" id="liftoff">Status: {{launch.launch.status_name}}</p>
-                  <p class="card-text " id="liftoff">Location:{{launch.launch.pad_location}}</p>
+                  <p class="card-text" id="liftoff"><span class="title-color">Liftoff: </span> {{launch.launch.window_start | formatdatetime}}</p>
+                  <p class="card-text" id="liftoff"><span class="title-color">Status: </span> {{launch.launch.status_name}}</p>
+                  <p class="card-text " id="liftoff"><span class="title-color">Location: </span>{{launch.launch.pad_location}}</p>
      
                 <form action="/delete_launch" method="POST">
                     <input id="launch_name" name="launch_name" type="hidden" value="{{launch.launch.name}}">
