@@ -17,19 +17,19 @@
         
 
     <div id="upcoming-container" class="container-md">
-        <div id="upcoming-overall-card" class="card mb-3 border border-light offset-md-4" style="max-width: 800px;">
+        <div id="upcoming-overall-card" class="card w-80 mt-5 mb-5 mx-auto border border-light" style="max-width: 800px;">
             <div class="row no-gutters">
                 <div class="col-md-4">
                     <img src="{{article.image}}" class="card-img p-3 " alt="news artciles" style="min-height: 250px;" style="min-width: 250px;">
-                    <p><a href="{{article.url}}" class="text-warning offset-md-4" >More info</a></p> 
+                    <p><a href="{{article.url}}" class="info-text offset-md-4" >More info</a></p> 
                     
 
                 </div>
                 <div class="col-md-8 p-3">
                 <div class="card-body ">
                   <h5 class="card-title">{{article.title}}</h5>
-                  <p class="card-text" id="liftoff">{{article.news_site}}</p>
-                  <p class="card-text" id="liftoff">{{article.date | formatdatetime}} PST</p>
+                  <p class="card-text" id="liftoff"><span class="title-color">News Agency: </span>{{article.news_site}}</p>
+                  <p class="card-text" id="liftoff"><span class="title-color">Date: </span>{{article.date | formatdatetime}} PST</p>
                   <p class="card-text " id="liftoff">{{article.summary}}</p>
                     
                   <form action="/add_article" method="POST">
