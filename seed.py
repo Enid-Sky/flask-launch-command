@@ -22,20 +22,21 @@ db.create_all()
 
 
 # SEED UPCOMING LAUNCH DATABASE
-# def upcoming_launch_api():
-res = requests.get(
-    "https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=5/?format=json")
+def upcoming_launch_api():
 
-launch_data = res.json()['results']
+    res = requests.get(
+        "https://ll.thespacedevs.com/2.0.0/launch/upcoming/?format=json&limit=10&offset=3")
 
-for launch in launch_data:
-    name, status_name, window_start, wiki_url, pad_location, image = (
-        launch['name'], launch['status']['name'], launch['window_start'], launch['pad']['wiki_url'], launch['pad']['location']['name'], launch['image'])
+    launch_data = res.json()['results']
 
-    create_launch = crud.create_launch(
-        name=name, status_name=status_name, window_start=window_start, wiki_url=wiki_url, pad_location=pad_location, image=image)
+    for launch in launch_data:
+        name, status_name, window_start, wiki_url, pad_location, image = (
+            launch['name'], launch['status']['name'], launch['window_start'], launch['pad']['wiki_url'], launch['pad']['location']['name'], launch['image'])
 
-    # return create_launch
+        create_launch = crud.create_launch(
+            name=name, status_name=status_name, window_start=window_start, wiki_url=wiki_url, pad_location=pad_location, image=image)
+
+    return create_launch
 
 
 # SEED USER DATABASE
@@ -66,4 +67,5 @@ def news_api():
     return create_article
 
 
+upcoming_launch_api()
 news_api()
