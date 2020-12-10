@@ -8,8 +8,8 @@ Launch Command is a place for rocket enthusiasts to find the latest information 
 
 On the landing page, visitors are right  away greeted by a live countdown to the next exciting rocket launch. On the upcoming launches page, users will find information on the next 10 missions. Via the Twilio API, users also have the option of receiving a text reminder of the time and date of the next exciting launch! Users also have the capability to save or delete their favorite launches and news articles from their personal libraries.
 
-## Features
-
+## DEMO Video
+ [Launch Command](https://www.youtube.com/watch?v=ME62n_jHDP8)
 
 ## Technologies and Stack
 
