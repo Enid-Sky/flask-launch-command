@@ -14,7 +14,7 @@ background-size: cover;
 
 
 body {
-    background-image:url(img/pages.jpg);
+    background-image:url(img/background_space.png);
     /* background-color: #222831; */
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -150,16 +150,16 @@ font-family: Roboto,'Open Sans', sans-serif;
 
 #countdown {
     font-size: 50px;
-    word-spacing: 10px;
+    word-spacing: 7px;
     color: #fd8c04;
 }
 
 .countdown-text {
-    word-spacing: 47px;
+    word-spacing: 52px;
 }
 
 #main-home-container {
-    margin-top: 350px;
+    margin-top: 250px;
 }
 
 
@@ -261,7 +261,12 @@ font-family: Roboto,'Open Sans', sans-serif;
     background-image: radial-gradient( circle 1086px at 1.1% 96.2%,  rgba(1,44,66,1) 0%, rgba(163,221,253,1) 53.6% );
     }
 
+/* ABOUT */
 
+.logos {
+    justify-content: center;
+    align-items:center;
+}
 
 /* --------------------------------ISSUE */
 /* #wrapper {
