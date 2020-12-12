@@ -44,7 +44,7 @@ On the landing page, visitors are right  away greeted by a live countdown to the
 
 - Create an account with Twilio and get an API key.
 
-- Store the key in a file names 'secrets.sh'
+- Store the key in a file named 'secrets.sh'
 
     `source secrest.sh`
 
