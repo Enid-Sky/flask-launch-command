@@ -23,7 +23,7 @@ On the landing page, visitors are right  away greeted by a live countdown to the
 - Bootstrap4
 - HTML5
 - CSS3
-- [Launch Library 2 API](https://www.twilio.com/docs/usage/api)
+- [Twilio Rest API](https://www.twilio.com/docs/usage/api)
 - [Launch Library 2 API](https://thespacedevs.com/llapi)
 - [Spaceflight News API](https://thespacedevs.com/snapi)
 
