@@ -21,8 +21,6 @@ app = Flask(__name__)
 # session secret key
 app.secret_key = "COMMAND"
 
-# app.jinja_env.undefined = StrictUndefined
-
 
 #######################################
 #                                     #
@@ -47,13 +45,6 @@ def about():
     """ About page route"""
 
     return render_template('about.html')
-
-
-# @app.route('/register')
-# def create_user():
-
-#     # return render_template('signup.html')
-#     return redirect("/")
 
 
 @app.route('/register', methods=['POST'])
