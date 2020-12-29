@@ -270,9 +270,9 @@ def format_datetime(value, format="%B %d %I:%M:%S %p"):
     """Format a date time"""
 
     west = timezone('US/Pacific')
-    test = value.astimezone(west)
+    format_time = value.astimezone(west)
 
-    return test.strftime(format)
+    return format_time.strftime(format)
 
 
 # Register jinja template date filter
