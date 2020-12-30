@@ -45,7 +45,7 @@ class Upcominglaunch(db.Model):
     name = db.Column(db.String(100), nullable=False)
     status_name = db.Column(db.String(100), nullable=False)
     window_start = db.Column(db.DateTime(100), nullable=False)
-    wiki_url = db.Column(db.String(1000), nullable=False)
+    wiki_url = db.Column(db.String(1000), nullable=True)
     pad_location = db.Column(db.String(200), nullable=False)
     image = db.Column(db.String(1000), nullable=True)
 
